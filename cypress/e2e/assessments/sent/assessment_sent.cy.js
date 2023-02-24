@@ -1,10 +1,12 @@
 import { credentials } from '../../../credentials'
 import '../partials/assessment_questions_create.cy'
 import '../partials/assessment_component.cy'
+import '../partials/spanish_flag.cy'
 import { questions } from '../../../assessment_questions'
 import { multiple } from '../../../assessment_questions'
 import { spanish_multiple } from '../../../assessment_questions'
 import { spanish_question } from '../../../assessment_questions'
+import { recipients } from '../../../recipients'
 
 
 describe('Assessment', () => {
@@ -24,7 +26,22 @@ describe('Assessment', () => {
     cy.CreateQuestions()
     cy.CreateSpanishQuestions()
     //Check that the spanish flag is displayed
-    cy.get('[value="es"]').should('be.visible').should('have.text','es')
+    cy.CheckSpanishFlag()
+    cy.get('.olumo-review-button > .olumo-button > .olumo-caption').should('have.text',"Save & Review")
+    .click()
+    //Click the continue button
+    cy.get('.olumo-cancel-button > .olumo-button').should('have.text',' Continue').click()
+    for(let i=0;i<recipients.length;i++){
+
+    cy.get('.olumo-recipients-section > .fluid').type(recipients[i])
+    cy.get('.visible > :nth-child(1)').then(($ele=>{
+      $ele.click()
+
+    })
+    )
+  }
+
+    
       
     
     //Click the Save and Review Button
