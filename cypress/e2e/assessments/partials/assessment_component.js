@@ -1,3 +1,5 @@
+import { recipients } from '../../../recipients'
+
 Cypress.Commands.add("clickDraftButton", () => {
     //Click the Assessment Button in the sidebar
     cy.ClickAssessmentButtton()
@@ -5,7 +7,7 @@ Cypress.Commands.add("clickDraftButton", () => {
     cy.get('.olumo-draft').click()
   })
 
-  Cypress.Commands.add('clickSentButton',()=>{
+Cypress.Commands.add('clickSentButton',()=>{
   cy.ClickAssessmentButtton()
   cy.get('.olumo-sent').click()
 
@@ -18,7 +20,7 @@ Cypress.Commands.add('CheckSentContainer',()=>{
 })
 
   
-  Cypress.Commands.add("checkMainContainer", () => {
+Cypress.Commands.add("checkMainContainer", () => {
     //check the main container
     cy.get('.olumo-survey-content').should('exist').then(() => {
       //check the draft heading
@@ -41,7 +43,21 @@ Cypress.Commands.add('CheckSentContainer',()=>{
     cy.get('.olumo-image-section > img').should('exist')
     cy.get('.olumo-desc > .olumo-btn-section').should('exist')
   })
-    
+
+  Cypress.Commands.add('SelectUser', () => {
+    for(let i=0; i<recipients.length;i++){
+    cy.get('.olumo-recipients-section > .fluid').type(recipients[i])
+    cy.get('.visible').then(($ele) => {
+      const resultFound = $ele.find('.item').length > 0
+      if (resultFound) {
+        cy.get('.visible > :nth-child(1) > span').click()
+      } else {
+        cy.get('.visible > .message').should('contain', 'No results found')
+      }
+    })
+  }
+})
+  
   
 
   
