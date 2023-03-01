@@ -12,7 +12,7 @@ describe('Polls', () => {
       cy.get('.olumo-item-list > .active').should('be.visible').should('have.text','Polls')
       cy.get('[href="/announcements"]').should('be.visible').should('have.text','Announcements')
       cy.get('.content-head').should('be.visible').should('have.text','Recent Survey Questions')
-      cy.get('.search-filter-input').should('be.visible') 
+       
       cy.get('.search-filter-input').should('be.visible').then(()=>{
         cy.get('.olumo-button').should('be.visible').should('have.text','New Poll')
       

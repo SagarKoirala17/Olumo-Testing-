@@ -35,10 +35,13 @@ describe('Assessment', () => {
       .click()
     //Select the particular user
     cy.SelectUser()
-    //Blur the input field to close the recipient list
-    cy.get('.page').click()
+    cy.get('.olumo-receipent-title').click()
+    
+    
     //Click the "Save & Send" button
     cy.get('.olumo-row > :nth-child(2) > .olumo-button').click()
+    cy.get('#assessment-all > :nth-child(1)').should('contain','Test Assessment').should('contain','View Activity')
   })
+  
   
 })

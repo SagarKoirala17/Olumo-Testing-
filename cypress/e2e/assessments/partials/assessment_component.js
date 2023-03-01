@@ -52,7 +52,7 @@ Cypress.Commands.add("checkMainContainer", () => {
       if (resultFound) {
         cy.get('.visible > :nth-child(1) > span').click()
       } else {
-        cy.get('.visible > .message').should('contain', 'No results found')
+        cy.get('.visible > .message').have.text('contain', 'No results found.')
       }
     })
   }
