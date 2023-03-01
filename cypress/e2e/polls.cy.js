@@ -2,6 +2,7 @@ import { credentials } from '../credentials'
 import { questions } from '../assessment_questions'
 import { multiple } from '../assessment_questions'
 import { shuffle } from '../shuffle'
+import './polls/partials/polls_components'
 
 describe('Polls', () => {
   beforeEach(() => {
@@ -9,21 +10,15 @@ describe('Polls', () => {
   })
   
   it('Check the assessment component',()=>{
-      cy.get('.olumo-item-list > .active').should('be.visible').should('have.text','Polls')
-      cy.get('[href="/announcements"]').should('be.visible').should('have.text','Announcements')
-      cy.get('.content-head').should('be.visible').should('have.text','Recent Survey Questions')
-       
-      cy.get('.search-filter-input').should('be.visible').then(()=>{
-        cy.get('.olumo-button').should('be.visible').should('have.text','New Poll')
-      
-    })
+      cy.clickThePollsButton()
+      cy.checkThePollsAndAnnouncementButton()
+      cy.checkHeadingContainer()
+      cy.checkTheNewPollsButton()
   })
 
-})  
-      
   it('Create the new Poll',()=>{
     const shuffledQuestions = shuffle(questions)
-    const selectedQuestions = shuffledQuestions.slice(0, 5)
+    const selectedQuestions = shuffledQuestions.slice(0, questions.length)
     cy.get('[data-tooltip="Polls"] > .text > .name').click()
     cy.get('.olumo-button').click()
     for(let i=0; i<selectedQuestions.length;i++){
@@ -46,15 +41,10 @@ describe('Polls', () => {
           }
         }
       
-      if(i<selectedQuestions.length-1){
-        cy.get('.olumo-question-button-section > .olumo-button').click()
-      }
-    })  
-
+        if(i<selectedQuestions.length-1){
+          cy.get('.olumo-question-button-section > .olumo-button').click()
+        }
+      })  
     }
-      
-
-
-    
   })
 })
