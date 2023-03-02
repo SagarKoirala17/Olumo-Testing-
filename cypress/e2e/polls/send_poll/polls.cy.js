@@ -3,6 +3,7 @@ import '../partials/polls_components'
 import '../questions/polls_questions'
 import '../../assessments/partials/assessment_component'
 
+
 describe('Polls', () => {
   beforeEach(() => {
     cy.login(credentials.email, credentials.password)
@@ -20,6 +21,8 @@ describe('Polls', () => {
    cy.CreatePollQuestions()
    cy.ClickTheEditButton()
    cy.CreatePollsSpanishQuestions()
+   //Check the Spanish FLag
+   cy.get('.olumo-flag-section > :nth-child(1)').should('be.visible')
    cy.SelectUser()
    //Close the dropdowm list
    cy.get('.olumo-recipients-section > .olumo-font-size-md').click()
