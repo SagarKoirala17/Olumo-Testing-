@@ -30,5 +30,8 @@ describe('Polls', () => {
    cy.get('.olumo-footer-section > .olumo-btn-with-primary-bg').click()
    //Click the Save Button
    cy.get('.olumo-row > :nth-child(2) > .olumo-button').click()
-  })
+  //Check the questions in the poll
+  cy.AssertPollsQuestions()
+  cy.get(':nth-child(2) > .olumo-table-footer > .olumo-pt-2').should('be.visible').should('have.text','View Details')
+   })
 })
