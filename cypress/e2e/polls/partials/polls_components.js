@@ -20,4 +20,6 @@ Cypress.Commands.add('AssertPollsQuestions',()=>{
     for(let i=0; i<5;i++){
     cy.get(`:nth-child(2) > :nth-child(${i+1}) > .olumo-question`).should('contain',questions[i])
     }
+    //Check the "View Activity" button
+    cy.get(':nth-child(2) > .olumo-table-footer > .olumo-pt-2').should('be.visible').should('have.text','View Details')
 })
