@@ -46,7 +46,7 @@ Cypress.Commands.add("checkMainContainer", () => {
 
   Cypress.Commands.add('SelectUser', () => {
     for(let i=0; i<recipients.length;i++){
-    cy.get('.olumo-recipients-section > .fluid').type(recipients[i])
+    cy.get('.olumo-recipients-section > .fluid .search').click().type(recipients[i])
     cy.get('.visible').then(($ele) => {
       const resultFound = $ele.find('.item').length > 0
       if (resultFound) {
