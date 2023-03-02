@@ -8,5 +8,6 @@ describe('Campaigns',()=>{
     it('Check the Campaign Components',()=>{
         cy.ClickCampaignButton()
         cy.CheckYourCampaignContainer()
+        cy.CheckExperienceCampaignContainer()
     })
 })
