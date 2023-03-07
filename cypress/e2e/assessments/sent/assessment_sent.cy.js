@@ -6,6 +6,7 @@ import { questions } from '../../../assessment_questions'
 import { multiple } from '../../../assessment_questions'
 import { spanish_multiple } from '../../../assessment_questions'
 import { spanish_question } from '../../../assessment_questions'
+import '../../global/navbar/navbar'
 
 
 
@@ -14,6 +15,7 @@ describe('Assessment', () => {
     cy.login(credentials.email, credentials.password)
   })
   it('check the component of the sent page',()=>{
+    cy.NavbarComponents()
     cy.clickSentButton()
     cy.CheckSentContainer()
     cy.checkYourAssessmentsContainer()

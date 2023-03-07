@@ -2,7 +2,7 @@ import { credentials } from '../../../credentials'
 import '../partials/polls_components'
 import '../questions/polls_questions'
 import '../../assessments/partials/assessment_component'
-
+import '../../global/navbar/navbar'
 
 describe('Polls', () => {
   beforeEach(() => {
@@ -10,6 +10,7 @@ describe('Polls', () => {
   })
   
   it('Check the assessment component',()=>{
+      cy.NavbarComponents()
       cy.clickThePollsButton()
       cy.checkThePollsAndAnnouncementButton()
       cy.checkHeadingContainer()

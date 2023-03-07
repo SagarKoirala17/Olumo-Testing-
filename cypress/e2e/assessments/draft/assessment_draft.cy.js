@@ -1,13 +1,14 @@
 import { credentials } from '../../../credentials'
 import '../partials/assessment_component.cy'
 import '../partials/assessment_questions_create.cy'
-
+import '../../global/navbar/navbar'
 
 describe('Assessment', () => {
   beforeEach(() => {
     cy.login(credentials.email, credentials.password)
   })
   it('Draft Components',()=>{
+    cy.NavbarComponents()
     cy.clickDraftButton()
     cy.checkMainContainer()
     cy.checkYourAssessmentsContainer()
