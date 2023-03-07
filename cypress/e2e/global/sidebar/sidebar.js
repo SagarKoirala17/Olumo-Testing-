@@ -35,9 +35,16 @@ Cypress.Commands.add('AssertSidebarText',()=>{
         cy.get('[data-tooltip="Settings"] > .text').should('be.visible').should('have.text','Settings')
     })
 })
-Cypress.Commands.add('CheckSidebarComponents',()=>{
+Cypress.Commands.add('CheckSidebarComponentsWhenButtonIsClicked',()=>{
     cy.get('.dash-sidenav').should('be.visible').then(()=>{  
         cy.AssertSidebarIcon()
+        
+     })
+})
+Cypress.Commands.add('CheckSidebarComponentsWhenButtonIsNotClicked',()=>{
+    cy.get('.dash-sidenav').should('be.visible').then(()=>{  
+        cy.AssertSidebarIcon()
+        cy.AssertSidebarText()
         
      })
 })

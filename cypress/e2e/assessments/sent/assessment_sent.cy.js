@@ -16,6 +16,7 @@ describe('Assessment', () => {
   })
   it('check the component of the sent page',()=>{
     cy.NavbarComponents()
+    cy.CheckSidebarComponentsWhenButtonIsNotClicked()
     cy.clickSentButton()
     cy.CheckSentContainer()
     cy.checkYourAssessmentsContainer()

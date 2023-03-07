@@ -10,6 +10,7 @@ describe('Assessment', () => {
   })
   it('Draft Components',()=>{
     cy.NavbarComponents()
+    cy.CheckSidebarComponentsWhenButtonIsNotClicked()
     cy.clickDraftButton()
     cy.checkMainContainer()
     cy.checkYourAssessmentsContainer()

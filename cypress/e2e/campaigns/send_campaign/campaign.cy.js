@@ -9,9 +9,9 @@ describe('Campaigns',()=>{
       })
     it('Check the Campaign Components',()=>{
         cy.NavbarComponents()
-        cy.CheckSidebarComponents()
-        // cy.ClickCampaignButton()
-        // cy.CheckYourCampaignContainer()
-        // cy.CheckExperienceCampaignContainer()
+        cy.CheckSidebarComponentsWhenButtonIsNotClicked()
+        cy.ClickCampaignButton()
+        cy.CheckYourCampaignContainer()
+        cy.CheckExperienceCampaignContainer()
     })
 })
