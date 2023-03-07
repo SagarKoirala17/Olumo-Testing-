@@ -3,6 +3,7 @@ import '../partials/polls_components'
 import '../questions/polls_questions'
 import '../../assessments/partials/assessment_component'
 import '../../global/navbar/navbar'
+import '../../global/sidebar/sidebar'
 
 describe('Polls', () => {
   beforeEach(() => {

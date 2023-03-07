@@ -2,6 +2,7 @@ import { credentials } from '../../../credentials'
 import '../partials/assessment_component.cy'
 import '../partials/assessment_questions_create.cy'
 import '../../global/navbar/navbar'
+import '../../global/sidebar/sidebar'
 
 describe('Assessment', () => {
   beforeEach(() => {

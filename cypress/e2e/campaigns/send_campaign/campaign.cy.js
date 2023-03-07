@@ -1,6 +1,7 @@
 import '../partials/campaign_homepage_components'
 import { credentials } from '../../../credentials'
 import '../../global/navbar/navbar'
+import '../../global/sidebar/sidebar'
 
 describe('Campaigns',()=>{
     beforeEach(() => {
@@ -8,6 +9,7 @@ describe('Campaigns',()=>{
       })
     it('Check the Campaign Components',()=>{
         cy.NavbarComponents()
+        cy.CheckSidebarComponents()
         // cy.ClickCampaignButton()
         // cy.CheckYourCampaignContainer()
         // cy.CheckExperienceCampaignContainer()
