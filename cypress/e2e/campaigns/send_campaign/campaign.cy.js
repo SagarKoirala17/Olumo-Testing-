@@ -21,6 +21,7 @@ describe('Campaigns',()=>{
         cy.CreateCampaignNameAndDescription()
         cy.ClickCategoryButton()
         cy.AssertMetricCategoryModal()
+        cy.CreateCategories()
 
     })
 })
