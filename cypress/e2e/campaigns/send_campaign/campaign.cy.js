@@ -14,4 +14,9 @@ describe('Campaigns',()=>{
         cy.CheckYourCampaignContainer()
         cy.CheckExperienceCampaignContainer()
     })
+    it('Create New Campaign',()=>{
+        cy.ClickCampaignButton()
+        cy.ClickNewCampaignButton()
+
+    })
 })

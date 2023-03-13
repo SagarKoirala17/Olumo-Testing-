@@ -19,3 +19,6 @@ Cypress.Commands.add('CheckExperienceCampaignContainer',()=>{
         })
     })
 })
+Cypress.Commands.add('ClickNewCampaignButton',()=>{
+    cy.get('.content > .blue').should('be.visible').click()
+})
