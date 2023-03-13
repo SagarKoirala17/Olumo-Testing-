@@ -2,6 +2,7 @@ import '../partials/campaign_homepage_components'
 import { credentials } from '../../../credentials'
 import '../../global/navbar/navbar'
 import '../../global/sidebar/sidebar'
+import '../../campaigns/partials/campaign_name'
 
 describe('Campaigns',()=>{
     beforeEach(() => {
@@ -17,6 +18,9 @@ describe('Campaigns',()=>{
     it('Create New Campaign',()=>{
         cy.ClickCampaignButton()
         cy.ClickNewCampaignButton()
+        cy.CreateCampaignNameAndDescription()
+        cy.ClickCategoryButton()
+        cy.AssertMetricCategoryModal()
 
     })
 })

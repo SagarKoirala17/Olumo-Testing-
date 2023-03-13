@@ -1,5 +1,5 @@
 // Array of campaign names
-const campaignNames = [
+export const campaignNames = [
     "Nike 'Just Do It' Campaign",
     "Dove 'Real Beauty' Campaign",
     "Coca-Cola 'Share a Coke' Campaign",
@@ -8,7 +8,7 @@ const campaignNames = [
   ];
   
   // Array of campaign descriptions
-  const campaignDescriptions = [
+ export const campaignDescriptions = [
     "Nike's 'Just Do It' campaign features famous athletes and emphasizes the idea that if you want to achieve your goals, you just have to do it.",
     "Dove's 'Real Beauty' campaign celebrates natural beauty and features women of all shapes, sizes, and ages.",
     "Coca-Cola's 'Share a Coke' campaign featured personalized Coke bottles with people's names on them, encouraging customers to share a Coke with friends and family.",

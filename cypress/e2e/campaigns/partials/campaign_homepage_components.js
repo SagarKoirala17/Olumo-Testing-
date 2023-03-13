@@ -22,3 +22,30 @@ Cypress.Commands.add('CheckExperienceCampaignContainer',()=>{
 Cypress.Commands.add('ClickNewCampaignButton',()=>{
     cy.get('.content > .blue').should('be.visible').click()
 })
+Cypress.Commands.add('ClickCategoryButton',()=>{
+    cy.get('#addCategoryButton').should('be.visible').click()
+})
+Cypress.Commands.add('AssertMetricCategoryModal',()=>{
+    cy.get('#categoryFormModal > .header').should('be.visible').should('have.text','Add Metric Category')
+    cy.get('#categoryFormModal > .content').should('be.visible').then(()=>{
+        cy.get('#categoryFormModal > .content > :nth-child(1)').should('be.visible').should('have.text','You will add questions to each Category as they pertain to them. ')
+        cy.get('.metrics-category-form-info-card > .grid > :nth-child(1)').should('be.visible').then(()=>{
+            cy.get('.metrics-category-form-info-card > .grid > :nth-child(1) > .field > label').should('be.visible').should('have.text','Metric Category*')
+            cy.get('#category_name').should('be.visible')
+        })
+        cy.get('.metrics-category-form-info-card > .grid > :nth-child(2)').should('be.visible').then(()=>{
+            cy.get(':nth-child(2) > .field > label').should('be.visible').should('have.text','Intended Result')
+            cy.get('#category_intended_result').should('be.visible')
+        })
+        cy.get('.metrics-category-form-info-card > .grid > :nth-child(3)').should('be.visible').then(()=>{
+            cy.get(':nth-child(3) > .field > label').should('be.visible').should('have.text','Description')
+            cy.get('#category_description').should('be.visible')
+        })
+        cy.get('.grid > :nth-child(4)').should('be.visible').then(()=>{
+            cy.get(':nth-child(4) > .actions > .mini').should('be.visible').should('have.text','Cancel')
+            cy.get(':nth-child(4) > .actions > .btn').should('be.visible')
+
+        })
+
+    })
+})
