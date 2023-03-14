@@ -29,11 +29,8 @@ describe('Assessment', () => {
     cy.CreateSpanishQuestions()
     //Check that the spanish flag is displayed
     cy.CheckSpanishFlag()
-    
     cy.SendAssessment()
-    
     cy.AssertSentAssessment()
+    
   })
-  
-  
 })

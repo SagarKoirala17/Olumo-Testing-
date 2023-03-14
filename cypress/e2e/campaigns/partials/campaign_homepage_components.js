@@ -55,3 +55,16 @@ Cypress.Commands.add('ClickNextButton',()=>{
 Cypress.Commands.add('ClickAddQuestionButton',()=>{
     cy.get('.content > .button').should('be.visible').click()
 })
+Cypress.Commands.add('ClickNextButtonInQuestionsPage',()=>{
+    cy.get('.actions > .ui').click()
+})
+Cypress.Commands.add('ClickTermsAndConditionsLink',()=>{
+    cy.get('#terms-modal-open').click()
+})
+Cypress.Commands.add('ClickAgreeButton',()=>{
+    cy.get('#agree-all-terms').click()
+})
+Cypress.Commands.add('ClickPublishButton',()=>{
+    cy.get('.right > .actions > .button').click()
+})
+

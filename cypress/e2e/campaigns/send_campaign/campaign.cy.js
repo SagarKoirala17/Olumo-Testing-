@@ -26,6 +26,10 @@ describe('Campaigns',()=>{
         cy.ClickNextButton()
         cy.ClickAddQuestionButton()
         cy.CreateCampaignQuestions()
+        cy.ClickNextButtonInQuestionsPage()
+        cy.ClickTermsAndConditionsLink()
+        cy.ClickAgreeButton()
+        cy.ClickPublishButton()
 
     })
 })
