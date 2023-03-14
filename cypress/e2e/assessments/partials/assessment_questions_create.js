@@ -10,12 +10,12 @@ Cypress.Commands.add("CreateQuestions", () => {
     
     cy.get('.content > .olumo-button').click()
    
-    cy.get('.olumo-default-input-field').type('Test Assessment')
+    cy.get('.olumo-default-input-field').clear().type('Test Assessment')
 
     questions.forEach((question, index) => {
       const selector = `#text-area-qn-${index}`
       const questionSelector = `.question-input-${index} > .olumo-input-field-with-dropdown-style-1 > .olumo-dropdown-section > .olumo-d-flex > .ui`
-      cy.get(selector).type(question)
+      cy.get(selector).clear().type(question)
       cy.get(questionSelector).click()
         
         cy.get('.visible >.item').should('be.visible').then(($items) => {

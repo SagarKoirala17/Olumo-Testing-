@@ -29,21 +29,10 @@ describe('Assessment', () => {
     cy.CreateSpanishQuestions()
     //Check that the spanish flag is displayed
     cy.CheckSpanishFlag()
-    cy.get('.olumo-review-button > .olumo-button > .olumo-caption')
-      .should('have.text', "Save & Review")
-      .click()
-    //Click the continue button
-    cy.get('.olumo-cancel-button > .olumo-button')
-      .should('have.text', ' Continue')
-      .click()
-    //Select the particular user
-    cy.SelectUser()
-    cy.get('.olumo-receipent-title').click()
     
+    cy.SendAssessment()
     
-    //Click the "Save & Send" button
-    cy.get('.olumo-row > :nth-child(2) > .olumo-button').click()
-    cy.get('#assessment-all > :nth-child(1)').should('contain','Test Assessment').should('contain','View Activity')
+    cy.AssertSentAssessment()
   })
   
   
