@@ -49,3 +49,9 @@ Cypress.Commands.add('AssertMetricCategoryModal',()=>{
 
     })
 })
+Cypress.Commands.add('ClickNextButton',()=>{
+    cy.get('#campaignSubmitBtn').should('be.visible').click()
+})
+Cypress.Commands.add('ClickAddQuestionButton',()=>{
+    cy.get('.content > .button').should('be.visible').click()
+})

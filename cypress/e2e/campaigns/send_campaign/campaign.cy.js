@@ -3,6 +3,7 @@ import { credentials } from '../../../credentials'
 import '../../global/navbar/navbar'
 import '../../global/sidebar/sidebar'
 import '../../campaigns/partials/campaign_name'
+import'../questions/campaign_questions'
 
 describe('Campaigns',()=>{
     beforeEach(() => {
@@ -22,6 +23,9 @@ describe('Campaigns',()=>{
         cy.ClickCategoryButton()
         cy.AssertMetricCategoryModal()
         cy.CreateCategories()
+        cy.ClickNextButton()
+        cy.ClickAddQuestionButton()
+        cy.CreateCampaignQuestions()
 
     })
 })
