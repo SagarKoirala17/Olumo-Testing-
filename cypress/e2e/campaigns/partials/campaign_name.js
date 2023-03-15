@@ -5,9 +5,9 @@ import { categoryDescriptions } from '../../../category'
 import { campaignCategories } from '../../../category'
 
 Cypress.Commands.add('CreateCampaignNameAndDescription',()=>{
-    const randomIndex = Math.floor(Math.random() * campaignDescriptions.length)
-    cy.get('#campaign_name').clear().type(campaignNames[randomIndex])
-    cy.get('#campaign_description').clear().type(campaignDescriptions[randomIndex])
+    window.randomIndex = Math.floor(Math.random() * campaignDescriptions.length)
+    cy.get('#campaign_name').clear().type(campaignNames[window.randomIndex])
+    cy.get('#campaign_description').clear().type(campaignDescriptions[window.randomIndex])
 
 
 })

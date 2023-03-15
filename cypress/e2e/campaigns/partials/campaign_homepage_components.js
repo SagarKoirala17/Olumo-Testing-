@@ -1,3 +1,6 @@
+import '../../../campaign_name_and_description'
+import { campaignNames } from '../../../campaign_name_and_description'
+
 Cypress.Commands.add('ClickCampaignButton',()=>{
     cy.get('[data-tooltip="Campaigns"] > .text').should('be.visible').should('have.text','Campaigns').click()
 })
@@ -65,12 +68,15 @@ Cypress.Commands.add('ClickAgreeButton',()=>{
     cy.get('#agree-all-terms').click()
 })
 Cypress.Commands.add('ClickPublishButton',()=>{
+    cy.url().should('match', /\/campaigns\/\d+\/create_step_3/)
+
+    cy.url().then(url => {
+    window.id = url.match(/\/campaigns\/(\d+)\//)[1] // Extract the ID from the URL
+    console.log(id)
+    expect(id).to.match(/^\d+$/) // Check that the ID consists of digits only
+    })
     cy.get('.right > .actions > .button').click()
 })
 Cypress.Commands.add('FetchCampaignHeader',()=>{
-    cy.get(':nth-child(n) > .seven > h4').then(($items)=>{
-      let campaignHeader= $items.toArray().map((item) => item.innerText.trim())
-      console.log(campaignHeader)
-    })
-  })
-
+    cy.get(`[href="/campaigns/${id}/activate"] > .ui`).click()
+})
