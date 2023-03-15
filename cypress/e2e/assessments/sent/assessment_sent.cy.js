@@ -2,10 +2,6 @@ import { credentials } from '../../../credentials'
 import '../partials/assessment_questions_create'
 import '../partials/assessment_component'
 import '../partials/spanish_flag'
-import { questions } from '../../../assessment_questions'
-import { multiple } from '../../../assessment_questions'
-import { spanish_multiple } from '../../../assessment_questions'
-import { spanish_question } from '../../../assessment_questions'
 import '../../global/navbar/navbar'
 
 

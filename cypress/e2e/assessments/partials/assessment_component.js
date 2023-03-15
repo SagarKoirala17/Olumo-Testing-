@@ -79,4 +79,4 @@ Cypress.Commands.add('SendAssessment',()=>{
 Cypress.Commands.add('AssertSentAssessment',()=>{
   cy.get('#assessment-all > :nth-child(1)').should('contain','Test Assessment').should('contain','View Activity')
 })
-  
+

@@ -67,4 +67,10 @@ Cypress.Commands.add('ClickAgreeButton',()=>{
 Cypress.Commands.add('ClickPublishButton',()=>{
     cy.get('.right > .actions > .button').click()
 })
+Cypress.Commands.add('FetchCampaignHeader',()=>{
+    cy.get(':nth-child(n) > .seven > h4').then(($items)=>{
+      let campaignHeader= $items.toArray().map((item) => item.innerText.trim())
+      console.log(campaignHeader)
+    })
+  })
 
