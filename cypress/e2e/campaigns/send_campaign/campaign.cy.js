@@ -30,7 +30,9 @@ describe('Campaigns',()=>{
         cy.ClickTermsAndConditionsLink()
         cy.ClickAgreeButton()
         cy.ClickPublishButton()
-        cy.FetchCampaignHeader()
+        cy.ClickActivateCampaignButton()
+        cy.ClickEditRecipientListLink()
+        cy.ClickAddPeopleButton()
 
     })
 })

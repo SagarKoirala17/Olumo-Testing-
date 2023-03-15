@@ -77,6 +77,13 @@ Cypress.Commands.add('ClickPublishButton',()=>{
     })
     cy.get('.right > .actions > .button').click()
 })
-Cypress.Commands.add('FetchCampaignHeader',()=>{
+Cypress.Commands.add('ClickActivateCampaignButton',()=>{
     cy.get(`[href="/campaigns/${id}/activate"] > .ui`).click()
+})
+
+Cypress.Commands.add('ClickEditRecipientListLink',()=>{
+    cy.get(':nth-child(1) > .five > .edit-link > span').click()
+})
+Cypress.Commands.add('ClickAddPeopleButton',()=>{
+    cy.get('#add-to-campaign').click()
 })

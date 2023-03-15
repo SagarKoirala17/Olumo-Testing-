@@ -1,6 +1,6 @@
 import { credentials } from '../../../credentials'
-import '../partials/assessment_component.cy'
-import '../partials/assessment_questions_create.cy'
+import '../partials/assessment_component'
+import '../partials/assessment_questions_create'
 import '../../global/navbar/navbar'
 import '../../global/sidebar/sidebar'
 
