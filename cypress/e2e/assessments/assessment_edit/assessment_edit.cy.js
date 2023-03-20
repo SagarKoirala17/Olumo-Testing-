@@ -8,7 +8,7 @@ describe('Clearing Draft Assessment to sent',()=>{
       it('Edit Assessment',()=>{
       cy.clickDraftButton()
       cy.ClickEditButton()
-      cy.CreateQuestions()
+      cy.EditQuestions()
       cy.SendAssessment()
       cy.AssertSentAssessment()  
       })

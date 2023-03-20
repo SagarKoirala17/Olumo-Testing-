@@ -21,6 +21,7 @@ describe('Assessment', () => {
   })
   it('send the question to the particular user', () => {
     cy.clickSentButton()
+    cy.ClickNewAssessmentButton()
     cy.CreateQuestions()
     cy.CreateSpanishQuestions()
     //Check that the spanish flag is displayed

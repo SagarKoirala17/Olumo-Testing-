@@ -79,4 +79,6 @@ Cypress.Commands.add('SendAssessment',()=>{
 Cypress.Commands.add('AssertSentAssessment',()=>{
   cy.get('#assessment-all > :nth-child(1)').should('contain','Test Assessment').should('contain','View Activity')
 })
-
+Cypress.Commands.add('ClickNewAssessmentButton',()=>{
+  cy.get('.content > .olumo-button').click()
+})

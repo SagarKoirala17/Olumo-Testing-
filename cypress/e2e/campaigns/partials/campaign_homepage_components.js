@@ -1,5 +1,6 @@
 import '../../../campaign_name_and_description'
 import { campaignNames } from '../../../campaign_name_and_description'
+import { recipients } from '../../../recipients'
 
 Cypress.Commands.add('ClickCampaignButton',()=>{
     cy.get('[data-tooltip="Campaigns"] > .text').should('be.visible').should('have.text','Campaigns').click()
@@ -85,5 +86,15 @@ Cypress.Commands.add('ClickEditRecipientListLink',()=>{
     cy.get(':nth-child(1) > .five > .edit-link > span').click()
 })
 Cypress.Commands.add('ClickAddPeopleButton',()=>{
-    cy.get('#add-to-campaign').click()
+    cy.get('#add-to-campaign > span').click()
+})
+Cypress.Commands.add('SelectCampaignRecipients',()=>{
+    for(let i=0;i<recipients.length;i++){
+    cy.get('#search_non_group_emp').type(recipients[i])
+    cy.wait(5000)
+    cy.get('#not-campaign-recipients > .item>.ui> label').click()
+    
+    
+    
+    }
 })

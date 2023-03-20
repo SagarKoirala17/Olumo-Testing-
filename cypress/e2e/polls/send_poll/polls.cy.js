@@ -10,7 +10,7 @@ describe('Polls', () => {
     cy.login(credentials.email, credentials.password)
   })
   
-  it('Check the assessment component',()=>{
+  it('Check the Polls component',()=>{
       cy.NavbarComponents()
       cy.clickThePollsButton()
       cy.checkThePollsAndAnnouncementButton()
