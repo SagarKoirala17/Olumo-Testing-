@@ -3,6 +3,7 @@ import '../partials/assessment_questions_create'
 import '../partials/assessment_component'
 import '../partials/spanish_flag'
 import '../../global/navbar/navbar'
+import '../../global/sidebar/sidebar'
 
 
 
