@@ -21,6 +21,8 @@ describe('Assessment', () => {
     //Create the set of questions
     
     cy.clickDraftButton()
+    cy.ClickNewAssessmentButton()
+    cy.AssessmentName()
     cy.CreateQuestions()
     cy.CreateSpanishQuestions()
     

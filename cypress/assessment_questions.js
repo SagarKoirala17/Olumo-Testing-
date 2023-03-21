@@ -1,3 +1,10 @@
+ export const assessmentTitles = [
+  'Employee Skills Assessment',
+  'Customer Service Evaluation',
+  'Product Knowledge Quiz',
+  'Software Proficiency Test',
+  'Leadership Development Assessment'
+]
  export const questions = [
     "How are you doing?",
     "What do you like?",
