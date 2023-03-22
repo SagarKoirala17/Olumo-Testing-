@@ -12,9 +12,10 @@ describe('Clearing Draft Assessment to sent',()=>{
       
       cy.ClickEditButton()
       cy.AssessmentName()
-      cy.EditQuestions()  
+      cy.EditQuestions()
+      cy.CreateSpanishQuestions()  
       
-      // cy.SendAssessment()
-      // cy.AssertSentAssessment()  
+      cy.SendAssessment()
+      cy.AssertSentAssessment()  
       })
 })
