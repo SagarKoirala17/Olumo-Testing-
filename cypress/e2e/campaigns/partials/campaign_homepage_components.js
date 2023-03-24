@@ -89,13 +89,17 @@ Cypress.Commands.add('ClickAddPeopleButton',()=>{
     cy.get('#add-to-campaign > span').click()
 })
 Cypress.Commands.add('SelectCampaignRecipients',()=>{
-    for(let i=0;i<recipients.length-1;i++){
-    cy.get('#search_non_group_emp').type(recipients[0])
+    for(let i=0;i<recipients.length;i++){
+    cy.get('#search_non_group_emp').type(recipients[i])
     
-    cy.get('#not-campaign-recipients > :nth-child(1) > .ui').click()
+    cy.get('#not-campaign-recipients > :nth-child(1) > .ui > label ').click()
     cy.get('#apply-add').click()
+    cy.get('#add-to-campaign').click()
     
     
     
     }
+})
+Cypress.Commands.add('ClickBackButton',()=>{
+    cy.get('.back').click()
 })
