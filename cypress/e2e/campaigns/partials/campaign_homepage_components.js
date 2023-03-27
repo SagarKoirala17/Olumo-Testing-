@@ -103,3 +103,6 @@ Cypress.Commands.add('SelectCampaignRecipients',()=>{
 Cypress.Commands.add('ClickBackButton',()=>{
     cy.get('.back').click()
 })
+Cypress.Commands.add('ClickActivateButton',()=>{
+    cy.get('.actions > .blue').click()
+})

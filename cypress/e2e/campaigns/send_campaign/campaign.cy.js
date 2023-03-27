@@ -35,6 +35,7 @@ describe('Campaigns',()=>{
         cy.ClickAddPeopleButton()
         cy.SelectCampaignRecipients()
         cy.ClickBackButton()
+        cy.ClickActivateButton()
 
     })
 })
