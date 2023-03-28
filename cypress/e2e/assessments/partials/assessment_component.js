@@ -76,9 +76,19 @@ Cypress.Commands.add('SendAssessment',()=>{
     //Click the "Save & Send" button
     cy.get('.olumo-row > :nth-child(2) > .olumo-button').click()
 })
+
 Cypress.Commands.add('AssertSentAssessment',()=>{
   cy.get('#assessment-all > :nth-child(1)').should('contain',window.randomTitle).should('contain','View Activity')
 })
+Cypress.Commands.add('AssertDraftAssessment',()=>{
+  cy.get('#assessment-all > :nth-child(1)').should('contain','Edit').should('contain',window.randomTitle)
+})
 Cypress.Commands.add('ClickNewAssessmentButton',()=>{
   cy.get('.content > .olumo-button').click()
+})
+Cypress.Commands.add('FetchSentAssessment',()=>{
+  cy.get('#assessment-sent > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
+    let sentAssessment=$items.toArray().map((item) => item.innerText.trim())
+    console.log(sentAssessment)
+  })
 })

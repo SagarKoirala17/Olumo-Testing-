@@ -30,7 +30,7 @@ describe('Assessment', () => {
     cy.get('.olumo-arrow').click()
     // Click the Save & Exit button
     cy.get('.olumo-button-dropdown-section > .olumo-button').click()
-    cy.get('#assessment-all > :nth-child(1)').should('contain','Edit').should('contain','Test Assessment')
+    cy.AssertDraftAssessment()
   })
 })
 
