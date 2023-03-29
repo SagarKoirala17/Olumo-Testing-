@@ -87,8 +87,33 @@ Cypress.Commands.add('ClickNewAssessmentButton',()=>{
   cy.get('.content > .olumo-button').click()
 })
 Cypress.Commands.add('FetchSentAssessment',()=>{
-  cy.get('#assessment-sent > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
-    let sentAssessment=$items.toArray().map((item) => item.innerText.trim())
-    console.log(sentAssessment)
-  })
+  const allSentAssessment = []
+
+  function fetchAssessmentFromPage() {
+    cy.get('#assessment-sent > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
+      const sentAssessment = $items.toArray().map((item) => item.innerText.trim())
+      allSentAssessment.push(...sentAssessment)
+      console.log(allSentAssessment)
+      
+      
+    })
+
+    // Check if there is a next page
+    
+    cy.get('#assessment-sent > .grid > .column > .pages > .pagination > .next > a > .chevron').then($nextLink => {
+        if ($nextLink.length > 0) {
+          // If there is a next page, click on the link and recursively fetch the data
+          cy.wrap($nextLink).click()
+          cy.wait(5000)
+          fetchAssessmentFromPage()
+        } else {
+          // If there is no next page, return the fetched data
+          return allSentAssessment
+        }
+      })
+  }
+
+  // Start fetching data from the first page
+  fetchAssessmentFromPage()
 })
+
