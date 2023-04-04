@@ -87,33 +87,29 @@ Cypress.Commands.add('ClickNewAssessmentButton',()=>{
   cy.get('.content > .olumo-button').click()
 })
 Cypress.Commands.add('FetchSentAssessment',()=>{
-  const allSentAssessment = []
-
-  function fetchAssessmentFromPage() {
-    cy.get('#assessment-sent > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
-      const sentAssessment = $items.toArray().map((item) => item.innerText.trim())
-      allSentAssessment.push(...sentAssessment)
-      console.log(allSentAssessment)
-      
-      
-    })
-
-    // Check if there is a next page
+   window.allsent=[]
+  cy.get('#assessment-sent > .grid > .column > .pages > .pagination-label > span').then(($ele)=>{
+    let text =$ele.text()
+    let totalPage=text.split('of ')
+    console.log(totalPage)
+    let numText=parseInt(totalPage[1])
+    console.log(numText)
     
-    cy.get('#assessment-sent > .grid > .column > .pages > .pagination > .next > a > .chevron').then($nextLink => {
-        if ($nextLink.length > 0) {
-          // If there is a next page, click on the link and recursively fetch the data
-          cy.wrap($nextLink).click()
-          cy.wait(5000)
-          fetchAssessmentFromPage()
-        } else {
-          // If there is no next page, return the fetched data
-          return allSentAssessment
-        }
+    for(let i=1; i<=numText; i++){
+      // Get all the assessment headers on the current page
+      cy.get('#assessment-sent > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
+        // Extract the text content of the headers and push them to the allsent array
+        $items.each((index, item) => {
+          allsent.push(item.innerText.trim())
+        })
       })
-  }
-
-  // Start fetching data from the first page
-  fetchAssessmentFromPage()
+      // Click the 'Next' button on the pagination to go to the next page
+      if(i<numText){
+      cy.get('#assessment-sent > .grid > .column > .pages > .pagination > .next > a').click()
+      cy.wait(5000)
+      } 
+    } 
+    // Log the allsent array to the console
+    console.log(allsent)
+  })
 })
-
