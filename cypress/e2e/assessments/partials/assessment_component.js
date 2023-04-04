@@ -87,7 +87,7 @@ Cypress.Commands.add('ClickNewAssessmentButton',()=>{
   cy.get('.content > .olumo-button').click()
 })
 Cypress.Commands.add('FetchSentAssessment',()=>{
-   window.allsent=[]
+  window.allsent=[]
   cy.get('#assessment-sent > .grid > .column > .pages > .pagination-label > span').then(($ele)=>{
     let text =$ele.text()
     let totalPage=text.split('of ')
@@ -113,3 +113,30 @@ Cypress.Commands.add('FetchSentAssessment',()=>{
     console.log(allsent)
   })
 })
+Cypress.Commands.add('FetchDraftAssesssment',()=>{
+  cy.get('.olumo-draft').click()
+  window.DraftAssessment=[]
+  cy.get('#assessment-draft > .ui > .column > .pages > .pagination-label > span').then(($ele)=>{
+    let text=$ele.text()
+    let numtext=text.split('of ')
+    let totalpage=parseInt(numtext[1])
+    for(let i=1; i<=totalpage; i++){
+      // Get all the assessment headers on the current page
+      cy.get('#assessment-draft > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
+        // Extract the text content of the headers and push them to the allsent array
+        $items.each((index, item) => {
+          DraftAssessment.push(item.innerText.trim())
+        })
+      })
+      // Click the 'Next' button on the pagination to go to the next page
+      if(i<totalpage){
+      cy.get('#assessment-draft > .ui > .column > .pages > .pagination > .next > a').click()
+      cy.wait(5000)
+      } 
+    } 
+    // Log the allsent array to the console
+    console.log('draft',DraftAssessment)
+  })
+})
+      
+
