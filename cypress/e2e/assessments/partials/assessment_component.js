@@ -100,7 +100,7 @@ Cypress.Commands.add('FetchSentAssessment',()=>{
       cy.get('#assessment-sent > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
         // Extract the text content of the headers and push them to the allsent array
         $items.each((index, item) => {
-          allsent.push(item.innerText.trim())
+         allsent.push(item.innerText.trim())
         })
       })
       // Click the 'Next' button on the pagination to go to the next page
@@ -138,5 +138,40 @@ Cypress.Commands.add('FetchDraftAssesssment',()=>{
     console.log('draft',DraftAssessment)
   })
 })
-      
+  
+Cypress.Commands.add('FetchActiveAssessment',()=>{
+  cy.FetchSentAssessment()
+  cy.FetchDraftAssesssment()
+  cy.get('.olumo-all').click()
+  window.activeAssessment=[] 
+  cy.get('#assessment-all > .ui > .column > .pages > .pagination-label > span').then(($ele)=>{
+    let text=$ele.text()
+    let numtext=text.split('of ')
+    let totalpage=parseInt(numtext[1])
+    for(let i=1; i<=totalpage; i++){
+      // Get all the assessment headers on the current page
+      cy.get('#assessment-all > :nth-child(n) > .olumo-card-desc > .olumo-title-section > .olumo-title-wrapper > .olumo-card-title').then(($items)=>{
+        // Extract the text content of the headers and push them to the allsent array
+        $items.each((index, item) => {
+          activeAssessment.push(item.innerText.trim())
+        })
+      })
+      // Click the 'Next' button on the pagination to go to the next page
+      if(i<totalpage){
+          
+      cy.get('#assessment-all > .ui > .column > .pages > .pagination > .next > a').click()
+      cy.wait(5000)
+      } 
+    } 
+    // Log the allsent array to the console
+    console.log('all',activeAssessment)
+  })
+  console.log('sent',window.allsent)
+  console.log('draft',window.DraftAssessment)
+  cy.wrap(window.activeAssessment).should('include.members',window.allsent );
+  cy.wrap(window.activeAssessment).should('include.members', window.DraftAssessment);
+
+
+
+})
 

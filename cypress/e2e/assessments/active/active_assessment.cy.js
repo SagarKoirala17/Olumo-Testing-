@@ -6,9 +6,8 @@ describe('Active Assessment',()=>{
     })
     it('Collect All Assessment',()=>{
         cy.clickSentButton()
-        cy.FetchSentAssessment()
-        
-        cy.FetchDraftAssesssment()
+        cy.FetchActiveAssessment()
+
 
     })
 
