@@ -8,6 +8,7 @@ describe('Draft Campaigns',()=>{
     it('Publishing the draft campaign',()=>{
         cy.ClickCampaignButton()
         cy.ClickDraftCampaignbutton()
+        cy.StoreDraftAssessment()
         
     })
 })

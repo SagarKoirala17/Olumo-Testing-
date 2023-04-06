@@ -109,3 +109,13 @@ Cypress.Commands.add('ClickActivateButton',()=>{
 Cypress.Commands.add('ClickDraftCampaignbutton',()=>{
     cy.get('.draft-button > .ui').should('be.visible').click()
 })
+Cypress.Commands.add('StoreDraftAssessment',()=>{
+    cy.get(':nth-child(n) > .four > .purple').then(($items)=>{
+        let totalDraftAssessment=$items.toArray().map((item) => item.innerText.trim())
+        let randomDraft=Math.floor(Math.random()* totalDraftAssessment.length)
+        console.log(randomDraft)
+        cy.get(`:nth-child(${randomDraft}) > .four > .purple`).click()
+        
+
+    })
+})
