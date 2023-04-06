@@ -6,7 +6,8 @@ describe('Draft Campaigns',()=>{
         cy.login(credentials.email, credentials.password)
       })
     it('Publishing the draft campaign',()=>{
-        cy.ClickDraftCampaignbutton()
         cy.ClickCampaignButton()
+        cy.ClickDraftCampaignbutton()
+        
     })
 })
