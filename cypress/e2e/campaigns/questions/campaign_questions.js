@@ -1,10 +1,12 @@
 import { questions } from '../../../assessment_questions' 
 import { multiple } from '../../../assessment_questions'
 import '../partials/campaign_homepage_components'
+import { shuffle } from '../../../shuffle'
 
 Cypress.Commands.add('CreateCampaignQuestions',()=>{
+let shuffledQuestions=shuffle(questions)
 for(let i=1; i<questions.length;i++){
-    cy.get('.emojionearea-editor').type(questions[i])
+    cy.get('.emojionearea-editor').type(shuffledQuestions[i])
     cy.get('.question > .ui').click()
     cy.get('.visible >.item').should('be.visible').then(($items) => {
         console.log($items.length)
