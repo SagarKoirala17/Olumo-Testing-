@@ -106,3 +106,6 @@ Cypress.Commands.add('ClickBackButton',()=>{
 Cypress.Commands.add('ClickActivateButton',()=>{
     cy.get('.actions > .blue').click()
 })
+Cypress.Commands.add('ClickDraftCampaignbutton',()=>{
+    cy.get('.draft-button > .ui').should('be.visible').click()
+})
