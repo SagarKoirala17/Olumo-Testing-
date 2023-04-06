@@ -28,6 +28,14 @@ for(let i=1; i<questions.length;i++){
             } 
             }
         }
+        if(questionType=='Free Response'){
+            let checkbox=Math.round(Math.random())
+            console.log(checkbox)
+            if(checkbox==1){
+                cy.get('.free-response-watson > .ui > label').click()
+            }
+            
+        }
         cy.get('#new_question > .actions > .blue').click()
         if(i<questions.length-1)
         cy.ClickAddQuestionButton()

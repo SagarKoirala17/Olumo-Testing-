@@ -29,7 +29,7 @@ describe('Assessment', () => {
     // Click the downarrow below the Save & Review Button
     cy.get('.olumo-arrow').click()
     // Click the Save & Exit button
-    cy.get('.olumo-button-dropdown-section > .olumo-button').click()
+    cy.get('.olumo-review-button > .olumo-dropdown-button-menu > .olumo-button').click()
     cy.AssertDraftAssessment()
   })
 })
