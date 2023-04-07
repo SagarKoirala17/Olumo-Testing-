@@ -16,7 +16,9 @@ describe('Draft Campaigns',()=>{
         cy.AssertMetricCategoryModal()
         cy.CreateCategories()
         cy.wait(5000)
-        cy.AssertCategoryList()
+        cy.FetchCategoryID()
+        cy.FetchCategoryNumber()
+        cy.AssertCategoriesContainer()
 
 
         

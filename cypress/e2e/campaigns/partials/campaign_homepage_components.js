@@ -55,8 +55,8 @@ Cypress.Commands.add('AssertMetricCategoryModal',()=>{
 })
 
 
-Cypress.Commands.add('AssertCategoryList', () => {
-  let idArray = []
+Cypress.Commands.add('FetchCategoryID', () => {
+   window.idArray = []
   cy.get('#listCategoriesCard > .card').each(($el) => {
     let id = $el.attr('id')
     idArray.push(id)
@@ -64,6 +64,21 @@ Cypress.Commands.add('AssertCategoryList', () => {
     console.log(idArray)
   })
 })
+Cypress.Commands.add('FetchCategoryNumber', () => {
+    window.cat_num = idArray.map((id) => id.replace('category-', ''))
+    console.log(cat_num)
+  })
+  Cypress.Commands.add('AssertCategoriesContainer',()=>{
+    for(let i=0;i<idArray.length;i++){
+    cy.get(`#${idArray[i]} > .content-head > h4`).should('be.visible')
+    cy.get(`#${idArray[i]} > :nth-child(2) > :nth-child(1)`).should('be.visible').should('have.text','Intended Results')
+    cy.get(`#${idArray[i]} > :nth-child(2) > :nth-child(3)`).should('be.visible').should('have.text','Category Description')
+    cy.get(`#addPlaybook${cat_num[i]} > :nth-child(2)`).should('be.visible')
+    
+  }
+  cy.get('#addCategoryButton').should('be.visible')
+})
+  
 
   
 Cypress.Commands.add('ClickNextButton',()=>{
