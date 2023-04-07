@@ -78,7 +78,20 @@ Cypress.Commands.add('FetchCategoryNumber', () => {
   }
   cy.get('#addCategoryButton').should('be.visible')
 })
-  
+Cypress.Commands.add('AssertPlaybookPage',()=>{
+    for(let i=0;i<idArray.length;i++){
+    cy.get(`#addPlaybook${cat_num[i]} > :nth-child(2)`).click()
+    cy.get('#playBookFormModal > .header').should('be.visible')
+    cy.get('#playBookFormModal > .content > p').should('be.visible')
+    cy.get('.metrics-playbook-form-info-card > .grid > :nth-child(1) > .field > label').should('be.visible')
+    cy.get('.metrics-playbook-form-info-card > .grid > :nth-child(1) > .field > .ui').should('be.visible')
+    cy.get('.new-link').should('be.visible')
+    
+    cy.get(':nth-child(2) > .actions > .btn').should('be.visible')
+    cy.get(':nth-child(2) > .actions > .mini').should('be.visible').click()
+
+    }
+})
 
   
 Cypress.Commands.add('ClickNextButton',()=>{
