@@ -1,6 +1,8 @@
 import '../partials/campaign_homepage_components'
 import '../questions/campaign_questions'
+import '../partials/campaign_name'
 import { credentials } from '../../../credentials'
+
 describe('Draft Campaigns',()=>{
     beforeEach(() => {
         cy.login(credentials.email, credentials.password)
@@ -8,7 +10,15 @@ describe('Draft Campaigns',()=>{
     it('Publishing the draft campaign',()=>{
         cy.ClickCampaignButton()
         cy.ClickDraftCampaignbutton()
-        cy.StoreDraftAssessment()
+        cy.SelectDraftAssessment()
+        cy.CreateCampaignNameAndDescription()
+        cy.ClickCategoryButton()
+        cy.AssertMetricCategoryModal()
+        cy.CreateCategories()
+        cy.wait(5000)
+        cy.AssertCategoryList()
+
+
         
     })
 })

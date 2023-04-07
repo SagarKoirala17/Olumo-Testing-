@@ -53,6 +53,19 @@ Cypress.Commands.add('AssertMetricCategoryModal',()=>{
 
     })
 })
+
+
+Cypress.Commands.add('AssertCategoryList', () => {
+  let idArray = []
+  cy.get('#listCategoriesCard > .card').each(($el) => {
+    let id = $el.attr('id')
+    idArray.push(id)
+  }).then(() => {
+    console.log(idArray)
+  })
+})
+
+  
 Cypress.Commands.add('ClickNextButton',()=>{
     cy.get('#campaignSubmitBtn').should('be.visible').click()
 })
@@ -109,7 +122,7 @@ Cypress.Commands.add('ClickActivateButton',()=>{
 Cypress.Commands.add('ClickDraftCampaignbutton',()=>{
     cy.get('.draft-button > .ui').should('be.visible').click()
 })
-Cypress.Commands.add('StoreDraftAssessment',()=>{
+Cypress.Commands.add('SelectDraftAssessment',()=>{
     cy.get(':nth-child(n) > .four > .purple').then(($items)=>{
         let totalDraftAssessment=$items.toArray().map((item) => item.innerText.trim())
         let randomDraft=Math.floor(Math.random()* totalDraftAssessment.length)
