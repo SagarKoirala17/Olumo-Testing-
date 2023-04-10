@@ -92,6 +92,32 @@ Cypress.Commands.add('AssertPlaybookPage',()=>{
 
     }
 })
+Cypress.Commands.add('RedirectPlaybookPage', () => {
+    for (let i = 0; i < idArray.length; i++) {
+      cy.get(`#addPlaybook${cat_num[i]} > :nth-child(2)`).click();
+      cy.wait(5000);
+      cy.get('.new-link').should('be.visible').invoke('removeAttr', 'target').click();
+  
+      // Assert that the new tab has opened and its URL is as expected
+      cy.url().should('include', '/playbooks/new');
+  
+      // Visit the new URL and assert that the expected value is present on the page
+      cy.visit('/playbooks/new');
+      //Assert the titles of playbook
+      cy.get('.header').should('be.visible').should('have.text','New Playbook')
+      cy.get('.twelve > :nth-child(1) > .string').should('be.visible')
+      cy.get('.twelve > :nth-child(2) > .text').should('be.visible')
+      cy.get('#campaign_from_list > .input > label.select').should('be.visible')
+      cy.get('#campaign_from_list > .input > label.select') .should('be.visible')
+      cy.get(':nth-child(2) > .input > .string').should('be.visible')
+
+       // Go back to the previous page
+      cy.go('back');
+
+
+    }
+  });
+  
 
   
 Cypress.Commands.add('ClickNextButton',()=>{

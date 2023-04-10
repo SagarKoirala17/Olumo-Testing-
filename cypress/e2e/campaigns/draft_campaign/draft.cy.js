@@ -20,6 +20,7 @@ describe('Draft Campaigns',()=>{
         cy.FetchCategoryNumber()
         cy.AssertCategoriesContainer()
         cy.AssertPlaybookPage()
+        cy.RedirectPlaybookPage()
 
 
         
