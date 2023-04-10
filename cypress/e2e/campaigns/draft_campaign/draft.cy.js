@@ -11,7 +11,6 @@ describe('Draft Campaigns',()=>{
         cy.ClickCampaignButton()
         cy.ClickDraftCampaignbutton()
         cy.SelectDraftAssessment()
-        cy.CreateCampaignNameAndDescription()
         cy.ClickCategoryButton()
         cy.AssertMetricCategoryModal()
         cy.CreateCategories()
@@ -21,6 +20,7 @@ describe('Draft Campaigns',()=>{
         cy.AssertCategoriesContainer()
         cy.AssertPlaybookPage()
         cy.RedirectPlaybookPage()
+        cy.CreateCampaignNameAndDescription()
 
 
         
