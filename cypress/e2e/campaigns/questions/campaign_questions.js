@@ -50,10 +50,16 @@ for(let j=0;j<cat_num.length;j++){
     
 
     }
+    if(j<cat_num.length-1) {
+        cy.get(`div[data-category_id="${cat_num[j+1]}"] > .content > .button`).click()
+      }
     
+   
    
     
 }
+
+    
 
 })
 Cypress.Commands.add('AssertQuestionCategoryContainer',()=>{
