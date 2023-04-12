@@ -24,8 +24,17 @@ describe('Draft Campaigns',()=>{
         cy.ClickNextButton()
         cy.AssertQuestionCategoryContainer()
         cy.ClickAddQuestionButton()
-    
         cy.CreateCampaignQuestions()
+        cy.ClickNextButtonInQuestionsPage()
+        cy.ClickTermsAndConditionsLink()
+        cy.ClickAgreeButton()
+        cy.ClickPublishButton()
+        cy.ClickActivateCampaignButton()
+        cy.ClickEditRecipientListLink()
+        cy.ClickAddPeopleButton()
+        cy.SelectCampaignRecipients()
+        cy.ClickBackButton()
+        cy.ClickActivateButton()
 
 
         
