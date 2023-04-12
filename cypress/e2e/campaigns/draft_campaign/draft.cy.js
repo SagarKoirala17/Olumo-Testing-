@@ -21,6 +21,11 @@ describe('Draft Campaigns',()=>{
         cy.AssertPlaybookPage()
         cy.RedirectPlaybookPage()
         cy.CreateCampaignNameAndDescription()
+        cy.ClickNextButton()
+        cy.AssertQuestionCategoryContainer()
+        cy.ClickAddQuestionButton()
+       
+        cy.CreateCampaignQuestions()
 
 
         

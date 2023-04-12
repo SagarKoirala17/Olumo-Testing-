@@ -124,7 +124,11 @@ Cypress.Commands.add('ClickNextButton',()=>{
     cy.get('#campaignSubmitBtn').should('be.visible').click()
 })
 Cypress.Commands.add('ClickAddQuestionButton',()=>{
-    cy.get('.content > .button').should('be.visible').click()
+    for(let i=0;i<cat_num.length;i++){
+        
+    cy.get(`div[data-category_id="${cat_num[i]}"] > .content > .button`).click()
+    
+}
 })
 Cypress.Commands.add('ClickNextButtonInQuestionsPage',()=>{
     cy.get('.actions > .ui').click()
@@ -179,7 +183,7 @@ Cypress.Commands.add('ClickDraftCampaignbutton',()=>{
 Cypress.Commands.add('SelectDraftAssessment',()=>{
     cy.get(':nth-child(n) > .four > .purple').then(($items)=>{
         let totalDraftAssessment=$items.toArray().map((item) => item.innerText.trim())
-        let randomDraft=Math.floor(Math.random()* totalDraftAssessment.length)
+        let randomDraft=Math.floor(Math.random(1,2)* totalDraftAssessment.length)
         console.log(randomDraft)
         cy.get(`:nth-child(${randomDraft}) > .four > .purple`).click()
         
