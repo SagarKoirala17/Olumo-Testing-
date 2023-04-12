@@ -24,7 +24,7 @@ describe('Draft Campaigns',()=>{
         cy.ClickNextButton()
         cy.AssertQuestionCategoryContainer()
         cy.ClickAddQuestionButton()
-       
+    
         cy.CreateCampaignQuestions()
 
 

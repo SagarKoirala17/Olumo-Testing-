@@ -6,11 +6,11 @@ import { shuffle } from '../../../shuffle'
 Cypress.Commands.add('CreateCampaignQuestions',()=>{
 let shuffledQuestions=shuffle(questions)
 for(let j=0;j<cat_num.length;j++){
-    for(let i=1; i<questions.length;i++){
+    for(let i=0; i<questions.length;i++){
    
-        cy.get(`#addQuestion${cat_num[j]} > .question-fields > #new_question > .question > .question-input > .emojionearea > .emojionearea-editor`).type(shuffledQuestions[j])
+        cy.get(`#addQuestion${cat_num[j]} > .question-fields > #new_question > .question > .question-input > .emojionearea > .emojionearea-editor`).type(shuffledQuestions[i])
         cy.get(`#addQuestion${cat_num[j]}> .question-fields > #new_question > .question > .ui`).click()
-        cy.get('.visible >.item').should('be.visible').then(($items) => {
+        cy.get('.transition >.item').should('be.visible').then(($items) => {
         console.log($items.length)
         let questionTypes = $items.toArray().map((item) => item.innerText.trim())
         console.log(questionTypes)
@@ -22,16 +22,17 @@ for(let j=0;j<cat_num.length;j++){
         .contains(questionType)
         .click()
         if(questionType=='Multiple Choice'){
-            for(let k=0;k<multiple.length;j++){
+            for(let k=0;k<multiple.length;k++){
             
             cy.get(`#question_answers_attributes_${k}_body`).type(multiple[k])
             cy.get(`#question_answers_attributes_${k}_weight`).type(`${k+1}`)
             
-            if(j<multiple.length -1){
+            if(k<multiple.length -1){
                 cy.get('.add-ans > a > :nth-child(2)').click()
             } 
             }
         }
+        
         if(questionType=='Free Response'){
             let checkbox=Math.round(Math.random())
             console.log(checkbox)
@@ -40,6 +41,7 @@ for(let j=0;j<cat_num.length;j++){
             }
             
         }
+   
         cy.get(`#addQuestion${cat_num[j]} > .question-fields > #new_question > .actions > .blue`).click()
         if(i<questions.length-1)
         cy.get(`div[data-category_id="${cat_num[j]}"] > .content > .button`).click()
@@ -48,9 +50,11 @@ for(let j=0;j<cat_num.length;j++){
     
 
     }
+    
    
     
 }
+
 })
 Cypress.Commands.add('AssertQuestionCategoryContainer',()=>{
 for(let i=0;i<cat_num.length;i++){
