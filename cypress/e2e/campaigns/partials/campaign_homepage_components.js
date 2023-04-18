@@ -112,7 +112,7 @@ Cypress.Commands.add('RedirectPlaybookPage', () => {
       cy.get(':nth-child(2) > .input > .string').should('be.visible')
 
        // Go back to the previous page
-      cy.go('back');
+       cy.go('back')
 
 
     }

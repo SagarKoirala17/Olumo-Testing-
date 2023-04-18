@@ -16,13 +16,21 @@ describe('Campaigns',()=>{
         cy.CheckYourCampaignContainer()
         cy.CheckExperienceCampaignContainer()
     })
-    it.skip('Create New Campaign',()=>{
+    it('Create New Campaign',()=>{
         cy.ClickCampaignButton()
         cy.ClickNewCampaignButton()
-        cy.CreateCampaignNameAndDescription()
+        
         cy.ClickCategoryButton()
         cy.AssertMetricCategoryModal()
         cy.CreateCategories()
+        cy.wait(5000)
+        cy.FetchCategoryID()
+        cy.FetchCategoryNumber()
+        cy.AssertCategoriesContainer()
+        cy.AssertPlaybookPage()
+        cy.RedirectPlaybookPage()
+        
+        cy.CreateCampaignNameAndDescription()
         cy.ClickNextButton()
         cy.ClickAddQuestionButton()
         cy.CreateCampaignQuestions()
