@@ -1,3 +1,5 @@
+import { recipients } from "../../../recipients"
+
 Cypress.Commands.add('ClickPeopleButton',()=>{
     cy.get('[data-tooltip="People"] > .text > .name').click()
 })
@@ -122,7 +124,7 @@ const emailDomains = ["olumostage.com"];
 
 // Define an array to store the email addresses
 const emails = [];
-const recipients=[]
+ window.recipients=[]
 
 // Define a function to generate a random integer between min and max (inclusive)
 function getRandomInt(min, max) {
@@ -145,6 +147,8 @@ for (let i = 0; i < 10; i++) {
     email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${getRandomInt(0, 999)}@${emailDomains[0]}`;
   }
   emails.push(email);
+  console.log(emails
+    )
 
   // Generate a random cell phone number
   const cellPhone = `555-888-${getRandomInt(1000, 9999)}`;
@@ -155,6 +159,39 @@ for (let i = 0; i < 10; i++) {
 }
 
 // Log the arrays to the console
-console.log(recipients);
+console.log(window.recipients);
 
+})
+
+Cypress.Commands.add('SelectTheRandomRecipient',()=>{
+    let randomIndex=Math.floor(Math.random()*recipients.length)
+    
+    window.randomRecipients=recipients[randomIndex]
+    console.log(randomRecipients)
+    console.log(randomRecipients.firstName)
+    
+
+})
+
+Cypress.Commands.add('FillTheRecipientPage',()=>{
+    let option=Math.round(Math.random())
+    console.log(option)
+    cy.get('#recipient_first_name').type(randomRecipients.firstName)
+    cy.get('#recipient_last_name').type(randomRecipients.lastName)
+    if(option==0){
+        cy.get('#recipient_email_address').type(randomRecipients.email)
+    }
+    else{
+        cy.get('#recipient_phone').type(randomRecipients.cellPhone)
+    }
+
+
+
+
+
+})
+Cypress.Commands.add('FetchRecipientEmail',()=>{
+    cy.get('.highlight').then(()=>{
+
+    })
 })

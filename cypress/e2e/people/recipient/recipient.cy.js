@@ -19,6 +19,8 @@ describe('RecipientPageFlow',()=>{
         cy.AssertPhotoContainer()
         cy.AssertTheHeaderofRecipientPage()
         cy.NegativeTestingForRecipeint()
+        cy.SelectTheRandomRecipient()
+        cy.FillTheRecipientPage()
 
       })
 })
