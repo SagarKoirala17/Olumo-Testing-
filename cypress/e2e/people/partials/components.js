@@ -112,86 +112,102 @@ Cypress.Commands.add('AssertTheHeaderofRecipientPage',()=>{
         cy.get('.olumo-btn-with-primary-bg').should('be.visible')
     })
 })
-Cypress.Commands.add('NegativeTestingForRecipeint',()=>{
-    // Define an array to store the first names
-const firstNames = ["John", "Jane", "Bob", "Alice", "David", "Sarah", "Michael", "Emily", "Kevin", "Laura"];
+// Cypress.Commands.add('NegativeTestingForRecipeint',()=>{
+//     // Define an array to store the first names
+// const firstNames = ["John", "Jane", "Bob", "Alice", "David", "Sarah", "Michael", "Emily", "Kevin", "Laura"];
 
-// Define an array to store the last names
-const lastNames = ["Doe", "Smith", "Johnson", "Brown", "Davis", "Garcia", "Wilson", "Anderson", "Taylor", "Clark"];
+// // Define an array to store the last names
+// const lastNames = ["Doe", "Smith", "Johnson", "Brown", "Davis", "Garcia", "Wilson", "Anderson", "Taylor", "Clark"];
 
-// Define an array to store the email domains
-const emailDomains = ["olumostage.com"];
+// // Define an array to store the email domains
+// const emailDomains = ["olumostage.com"];
 
-// Define an array to store the email addresses
-const emails = [];
- window.recipients=[]
+// // Define an array to store the email addresses
+// const emails = [];
+//  window.recipients=[]
 
-// Define a function to generate a random integer between min and max (inclusive)
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// // Define a function to generate a random integer between min and max (inclusive)
+// function getRandomInt(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 
-// Create 10 recipients with unique first and last names, and unique email addresses with the .olumostage.com extension
-for (let i = 0; i < 10; i++) {
-  // Generate a random index for the first name and last name arrays
-  const firstNameIndex = getRandomInt(0, firstNames.length - 1);
-  const lastNameIndex = getRandomInt(0, lastNames.length - 1);
+// // Create 10 recipients with unique first and last names, and unique email addresses with the .olumostage.com extension
+// for (let i = 0; i < 10; i++) {
+//   // Generate a random index for the first name and last name arrays
+//   const firstNameIndex = getRandomInt(0, firstNames.length - 1);
+//   const lastNameIndex = getRandomInt(0, lastNames.length - 1);
 
-  // Get the first name and last name at the generated indices, and remove them from their respective arrays to ensure uniqueness
-  const firstName = firstNames.splice(firstNameIndex, 1)[0];
-  const lastName = lastNames.splice(lastNameIndex, 1)[0];
+//   // Get the first name and last name at the generated indices, and remove them from their respective arrays to ensure uniqueness
+//   const firstName = firstNames.splice(firstNameIndex, 1)[0];
+//   const lastName = lastNames.splice(lastNameIndex, 1)[0];
 
-  // Generate a unique email address with the .olumostage.com extension
-  let email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${emailDomains[0]}`;
-  while (emails.includes(email)) {
-    email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${getRandomInt(0, 999)}@${emailDomains[0]}`;
-  }
-  emails.push(email);
-  console.log(emails
-    )
+//   // Generate a unique email address with the .olumostage.com extension
+//   let email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${emailDomains[0]}`;
+//   while (emails.includes(email)) {
+//     email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${getRandomInt(0, 999)}@${emailDomains[0]}`;
+//   }
+//   emails.push(email);
+//   console.log(emails
+//     )
 
-  // Generate a random cell phone number
-  const cellPhone = `555-888-${getRandomInt(1000, 9999)}`;
+//   // Generate a random cell phone number
+//   const cellPhone = `555-888-${getRandomInt(1000, 9999)}`;
 
-  // Create the recipient object and push it into the array
-  const recipient = { firstName, lastName, email, cellPhone };
-  recipients.push(recipient);
-}
+//   // Create the recipient object and push it into the array
+//   const recipient = { firstName, lastName, email, cellPhone };
+//   recipients.push(recipient);
+// }
 
-// Log the arrays to the console
-console.log(window.recipients);
+// // Log the arrays to the console
+// console.log(window.recipients);
 
-})
+// })
 
-Cypress.Commands.add('SelectTheRandomRecipient',()=>{
-    let randomIndex=Math.floor(Math.random()*recipients.length)
+// Cypress.Commands.add('SelectTheRandomRecipient',()=>{
+//     let randomIndex=Math.floor(Math.random()*recipients.length)
     
-    window.randomRecipients=recipients[randomIndex]
-    console.log(randomRecipients)
-    console.log(randomRecipients.firstName)
+//     window.randomRecipients=recipients[randomIndex]
+//     console.log(randomRecipients)
+//     console.log(randomRecipients.firstName)
     
 
-})
+// })
 
-Cypress.Commands.add('FillTheRecipientPage',()=>{
-    let option=Math.round(Math.random())
-    console.log(option)
-    cy.get('#recipient_first_name').type(randomRecipients.firstName)
-    cy.get('#recipient_last_name').type(randomRecipients.lastName)
-    if(option==0){
-        cy.get('#recipient_email_address').type(randomRecipients.email)
-    }
-    else{
-        cy.get('#recipient_phone').type(randomRecipients.cellPhone)
-    }
-
-
+// Cypress.Commands.add('FillTheRecipientPage',()=>{
+//     let option=Math.round(Math.random())
+//     console.log(option)
+//     cy.get('#recipient_first_name').type(randomRecipients.firstName)
+//     cy.get('#recipient_last_name').type(randomRecipients.lastName)
+//     if(option==0){
+//         cy.get('#recipient_email_address').type(randomRecipients.email)
+//     }
+//     else{
+//         cy.get('#recipient_phone').type(randomRecipients.cellPhone)
+//     }
 
 
 
-})
-Cypress.Commands.add('FetchRecipientEmail',()=>{
-    cy.get('.highlight').then(()=>{
 
-    })
-})
+
+// })
+// Cypress.Commands.add('FetchRecipientEmail',()=>{
+//     window.existingEmails=[]
+//     cy.get('.pagination-label > span').each((pagination) => {
+//         let text=pagination.text()
+//         let numtext=text.split('of ')
+//         let totalpage=parseInt(numtext[1])
+//         console.log(totalpage)
+//         for(let i=1; i<=totalpage; i++){
+//             cy.get('.olumo-desc > .olumo-contact').then((recipient)=>{
+//                 recipient.each((index, item) => {
+//                     existingEmails.push(item.innerText.trim())
+//                     console.log(existingEmails)
+//                   })
+//             })
+//             if(i<totalpage){
+//                 cy.get('.next > a').click()
+//                 cy.wait(5000)
+//             }
+//         }
+//     });
+// })

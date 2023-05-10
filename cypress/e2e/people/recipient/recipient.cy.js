@@ -13,14 +13,27 @@ describe('RecipientPageFlow',()=>{
         cy.ClickPeopleButton()
         cy.CheckTabMenuButtons()
         cy.CheckPeopleTableComponents()
+        
         cy.ClickManuallyAddButton()
         cy.AssertRecipientDescriptionHeader()
         cy.AssertNoteContainer()
         cy.AssertPhotoContainer()
         cy.AssertTheHeaderofRecipientPage()
-        cy.NegativeTestingForRecipeint()
-        cy.SelectTheRandomRecipient()
-        cy.FillTheRecipientPage()
-
+       
       })
+      it('NegativeTestForRecipientEmail',()=>{
+        cy.ClickPeopleButton()
+        cy.ClickManuallyAddButton()
+        cy.get('#recipient_first_name').type('Nihal')
+        cy.get('#recipient_last_name').type('Dhakal')
+        cy.get('#recipient_email_address').type('nihal@olumo.com')
+        cy.get('.olumo-btn-with-primary-bg').click()
+        cy.get('.olumo-btn-with-primary-bg').should('be.visible').then(()=>{
+          cy.get('.error_notification').should('have.text','Please review the problems below:')
+          cy.get('.olumo-m-0 > li').should('have.text','Email has already been taken')
+        })
+
+        
+      })
+      
 })
