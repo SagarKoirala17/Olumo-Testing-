@@ -112,6 +112,19 @@ Cypress.Commands.add('AssertTheHeaderofRecipientPage',()=>{
         cy.get('.olumo-btn-with-primary-bg').should('be.visible')
     })
 })
+Cypress.Commands.add('AssertTerminateRecipientContiner',()=>{
+    cy.get('[href="/recipients/905985596/make-admin"]').should('have.text','Promote To Admin')
+    cy.get('#archive').should('have.text','Archive')
+    cy.get('.terminate-recipient').should('have.text','Termination Options').click()
+    cy.get('#form-905985596 > .olumo-header-section > .olumo-title').should('be.visible')
+    cy.get('.olumo-termination-date > .olumo-font-heavy').should('be.visible')
+    
+
+})
+
+
+  
+  
 // Cypress.Commands.add('NegativeTestingForRecipeint',()=>{
 //     // Define an array to store the first names
 // const firstNames = ["John", "Jane", "Bob", "Alice", "David", "Sarah", "Michael", "Emily", "Kevin", "Laura"];
