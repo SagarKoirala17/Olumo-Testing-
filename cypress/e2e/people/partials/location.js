@@ -14,14 +14,14 @@ Cypress.Commands.add('AssertLocationPage',()=>{
 
 })
 Cypress.Commands.add('AddNewLocation',()=>{
-    cy.get('#new_location > .fluid > #location_name').type('Merosssss Location')
+    cy.get('#new_location > .fluid > #location_name').type('Destiny Location')
     cy.get('#new_location > .actions > .blue').click()
-    //cy.get('.alert-content > p').should('have.text','Location was successfully created')
+    cy.get('.alert-content > p').should('have.text','Location was successfully created')
 
 })
 
 Cypress.Commands.add('SearchCreatedLocation',()=>{
-    cy.get('.search-filter-input').type('Merosssss Location')
+    cy.get('.search-filter-input').type('Destiny Location')
     cy.wait(5000)
   
 })
