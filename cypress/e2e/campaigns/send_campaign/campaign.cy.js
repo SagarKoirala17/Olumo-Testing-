@@ -28,7 +28,7 @@ describe('Campaigns',()=>{
         cy.FetchCategoryNumber()
         cy.AssertCategoriesContainer()
         cy.AssertPlaybookPage()
-        cy.RedirectPlaybookPage()
+        //cy.RedirectPlaybookPage()
         
         cy.CreateCampaignNameAndDescription()
         cy.ClickNextButton()

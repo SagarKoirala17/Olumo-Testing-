@@ -113,6 +113,8 @@ Cypress.Commands.add('RedirectPlaybookPage', () => {
 
        // Go back to the previous page
        cy.go('back')
+       cy.reload()
+       cy.wait(5000)
 
 
     }
