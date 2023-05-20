@@ -118,7 +118,11 @@ Cypress.Commands.add('AssertTerminateRecipientContiner',()=>{
     cy.get('.terminate-recipient').should('have.text','Termination Options').click()
     cy.get('#form-905985596 > .olumo-header-section > .olumo-title').should('be.visible')
     cy.get('.olumo-termination-date > .olumo-font-heavy').should('be.visible')
-    
+    cy.get(':nth-child(2) > .olumo-font-heavy').should('be.visible')
+    cy.get('.olumo-modal-content > :nth-child(2) > .ui > label').should('be.visible')
+    cy.get(':nth-child(3) > .olumo-font-heavy').should('be.visible')
+    cy.get(':nth-child(4) > .olumo-font-heavy').should('be.visible')
+    cy.get('#terminate-recipient-submit').click()
 
 })
 
