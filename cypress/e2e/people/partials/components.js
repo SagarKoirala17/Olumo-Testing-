@@ -112,11 +112,36 @@ Cypress.Commands.add('AssertTheHeaderofRecipientPage',()=>{
         cy.get('.olumo-btn-with-primary-bg').should('be.visible')
     })
 })
+Cypress.Commands.add('FetchUserId',()=>{
+    window.idArray=[]
+
+      cy.ClickPeopleButton()
+      //Search the Recipient
+      cy.get('#search').type('Nihal Dhakal')
+      cy.wait(5000)
+      cy.get('.olumo-pl-6 > .olumo-user-card').each(($ele)=>{
+        window.id=$ele.attr('id')
+        console.log(id)
+        idArray.push(id)
+        console.log(idArray)
+      })
+})
+
+Cypress.Commands.add('UpdateTheUser',()=>{
+    cy.get(`#${idArray[0]}> .dropdown > .chevron`).click()
+      cy.get(`#${idArray[0]} > .dropdown > .menu > .item > .olumo-pt-2 > .olumo-button`).click()
+      cy.get('#recipient_first_name').clear().type('Nihal')
+      cy.get('#recipient_last_name').clear().type('Dhakal')
+      cy.get('.olumo-btn-section > .olumo-btn-with-primary-bg').click()
+      cy.get('.alert-content > p').should('have.text','Recipient was successfully updated.')
+      cy.AssertTerminateRecipientContiner()
+     
+})
 Cypress.Commands.add('AssertTerminateRecipientContiner',()=>{
-    cy.get('[href="/recipients/905985596/make-admin"]').should('have.text','Promote To Admin')
+   
     cy.get('#archive').should('have.text','Archive')
     cy.get('.terminate-recipient').should('have.text','Termination Options').click()
-    cy.get('#form-905985596 > .olumo-header-section > .olumo-title').should('be.visible')
+    
     cy.get('.olumo-termination-date > .olumo-font-heavy').should('be.visible')
     cy.get(':nth-child(2) > .olumo-font-heavy').should('be.visible')
     cy.get('.olumo-modal-content > :nth-child(2) > .ui > label').should('be.visible')
@@ -125,6 +150,7 @@ Cypress.Commands.add('AssertTerminateRecipientContiner',()=>{
     cy.get('#terminate-recipient-submit').click()
 
 })
+
 
 
   

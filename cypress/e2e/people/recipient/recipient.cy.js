@@ -66,20 +66,8 @@ describe('RecipientPageFlow',()=>{
     })
 
     it.only('UpdateTheUser',()=>{
-      window.idArray=[]
-      cy.ClickPeopleButton()
-      //Search the Recipient
-      cy.get('#search').type('Nihal Dhakal')
-      cy.get('#recipient_id_905985596 > .dropdown > .chevron').click()
-      cy.get('#recipient_id_905985596 > .dropdown > .menu > .item > .olumo-pt-2 > .olumo-button').click()
-      cy.get('#recipient_first_name').clear().type('Nihal')
-      cy.get('#recipient_last_name').clear().type('Dhakal')
-      cy.get('.olumo-btn-section > .olumo-btn-with-primary-bg').click()
-      cy.get('.alert-content > p').should('have.text','Recipient was successfully updated.')
-      cy.AssertTerminateRecipientContiner()
-     
-
+      
+      cy.FetchUserId()
+      cy.UpdateTheUser()
     })
-
-  
 })
