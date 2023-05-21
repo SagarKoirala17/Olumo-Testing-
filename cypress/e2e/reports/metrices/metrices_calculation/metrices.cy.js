@@ -1,21 +1,21 @@
 import '../../../global/navbar/navbar'
 import '../../../global/sidebar/sidebar'
 import { credentials } from '../../../../credentials'
-import '../components/components'
-
-describe('RankingPageFlow',()=>{
+import '../components/component'
+import '../../rankings/components/components'
+describe('RecipientPageFlow',()=>{
     beforeEach(() => {
         cy.login(credentials.email, credentials.password)
       })
-      it('CheckTheComponentsOfReportsPage',()=>{
+      it('Check The components of metrices page',()=>{
         cy.NavbarComponents()
         cy.CheckSidebarComponentsWhenButtonIsNotClicked()
         cy.ClickTheReportButton()
-        cy.AssertMetricesAndRankingsButton()
-        cy.AssertTheRankingPageViaDepartmentFilter()
-        cy.AssertTheRankingPageViaOrganizationalFilter()
-        cy.AssertTheDiagram()
+        cy.ClickMetricesButton()
+        cy.AssertMetricesSortPage()
+        cy.AssertMetricesViewContainer()
 
-        
       })
+    
     })
+ 
