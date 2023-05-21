@@ -65,9 +65,18 @@ describe('RecipientPageFlow',()=>{
       })
     })
 
-    it.only('UpdateTheUser',()=>{
-      
+    it('UpdateTheUser',()=>{
+
       cy.FetchUserId()
       cy.UpdateTheUser()
     })
+    it.only('Check the global filter in people page',()=>{
+      cy.ClickPeopleButton()
+      //Click the global filter button
+      cy.get('.btn-global-filter').click()
+      cy.get('.filter-selection-container > .ui').type('Test1')
+          
+    
+    })
+    
 })
