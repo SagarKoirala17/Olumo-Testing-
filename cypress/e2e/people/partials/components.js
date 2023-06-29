@@ -1,6 +1,6 @@
 import { recipients } from "../../../recipients"
 
-Cypress.Commands.add('ClickPeopleButton',()=>{
+Cypress.Commands.add('clickPeopleButton',()=>{
     cy.get('[data-tooltip="People"] > .text > .name').click()
 })
 Cypress.Commands.add('CheckTabMenuButtons',()=>{
@@ -21,13 +21,13 @@ Cypress.Commands.add('CheckPeopleTableComponents',()=>{
         
     })
     cy.get('#search').should('be.visible')
-    cy.get('.dropdown-buttons > .dropdown').should('contain','Import People')
+    cy.get('.olumo-btn-font-sm').should('contain','Import People')
     cy.get('.title').should('be.visible')
 })
 
 Cypress.Commands.add('ClickManuallyAddButton',()=>{
-    cy.get('.dropdown-buttons > .dropdown').click()
-    cy.get('.item').contains('Manually Add People').click()
+    cy.get('.olumo-btn-font-sm > .chevron').click()
+    cy.get('[href="/recipients/new"]').click()
 })
 Cypress.Commands.add('AssertRecipientDescriptionHeader',()=>{
     cy.get('.olumo-col-largeScreen-9 > .cards > .card > .content-head').should('be.visible').then(()=>{
@@ -115,7 +115,7 @@ Cypress.Commands.add('AssertTheHeaderofRecipientPage',()=>{
 Cypress.Commands.add('FetchUserId',()=>{
     window.idArray=[]
 
-      cy.ClickPeopleButton()
+      cy.clickPeopleButton()
       //Search the Recipient
       cy.get('#search').type('Nihal Dhakal')
       cy.wait(5000)

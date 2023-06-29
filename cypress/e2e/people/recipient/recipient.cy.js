@@ -2,7 +2,7 @@ import '../../global/navbar/navbar'
 import '../../global/sidebar/sidebar'
 import { credentials } from '../../../credentials'
 import '../partials/components'
-
+import '../partials/recipient'
 describe('RecipientPageFlow',()=>{
     beforeEach(() => {
         cy.login(credentials.email, credentials.password)
@@ -10,7 +10,7 @@ describe('RecipientPageFlow',()=>{
       it('CheckPeoplePageComponent',()=>{
         cy.NavbarComponents()
         cy.CheckSidebarComponentsWhenButtonIsNotClicked()
-        cy.ClickPeopleButton()
+        cy.clickPeopleButton()
         cy.CheckTabMenuButtons()
         cy.CheckPeopleTableComponents()
         cy.ClickManuallyAddButton()
@@ -21,7 +21,7 @@ describe('RecipientPageFlow',()=>{
       })
 
       it('NegativeTestForRecipientEmail',()=>{
-        cy.ClickPeopleButton()
+        cy.clickPeopleButton()
         cy.ClickManuallyAddButton()
         cy.get('#recipient_first_name').type('Nihal')
         cy.get('#recipient_last_name').type('Dhakal')
@@ -34,7 +34,7 @@ describe('RecipientPageFlow',()=>{
       })
 
       it('NegativeTestForRecipientPhone',()=>{
-        cy.ClickPeopleButton()
+        cy.clickPeopleButton()
         cy.ClickManuallyAddButton()
         cy.get('#recipient_first_name').type('Nihal')
         cy.get('#recipient_last_name').type('Dhakal')
@@ -48,7 +48,7 @@ describe('RecipientPageFlow',()=>{
       
 
   it('NegativeTestForRecipientEmailAndPhone',()=>{
-      cy.ClickPeopleButton()
+      cy.clickPeopleButton()
       cy.ClickManuallyAddButton()
       cy.get('#recipient_first_name').type('Nihal')
       cy.get('#recipient_last_name').type('Dhakal')
@@ -67,111 +67,55 @@ describe('RecipientPageFlow',()=>{
       cy.UpdateTheUser()
     })
 
-    it('Check the global filter in people page via group',()=>{
-      cy.ClickPeopleButton()
+    it('Check the global filter in people page via group', () => {
+      cy.clickPeopleButton()
       cy.wait(7000)
-      //Click the global filter button
-      cy.get('.olumo-global-filter-button> img').click()
-      cy.get('.css-1hwfws3').type('Cypress Test Group')
-      cy.get('#react-select-3-option-69').click()
-      cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-      cy.get('#global-filter-count').should('have.text','(2 people)')
-      })
-    
-
-    it("Check the global filter in the people page via location",()=>{
-      cy.ClickPeopleButton()
-      cy.wait(7000)
-      //Click the global filter button
-      cy.get('.olumo-global-filter-button> img').click()
-      cy.get('.css-1hwfws3').type('Cypress Test Location')
-      cy.get('#react-select-3-option-70').click()
-      cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-      cy.get('#global-filter-count').should('have.text','(2 people)')
-      })
-
-      it("Check the global filter in the people page via department",()=>{
-        cy.ClickPeopleButton()
-        cy.wait(7000)
-        //Click the global filter button
-        cy.get('.olumo-global-filter-button> img').click()
-        cy.get('.css-1hwfws3').type('Cypress Test Department')
-        cy.get('#react-select-3-option-69').click()
-        cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-        cy.get('#global-filter-count').should('have.text','(2 people)')
-        })
-
-        it.only("Union and Intersection of groups and location",()=>{
-          cy.ClickPeopleButton()
-          cy.wait(7000)
-          //Click the global filter button
-          cy.get('.olumo-global-filter-button> img').click()
-          cy.get('.css-1hwfws3').type('Cypress Test Location')
-          cy.get('#react-select-3-option-71').click()
-          cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-          cy.get('.css-1hwfws3').type('Cypress Test Group')
-          cy.get('#react-select-3-option-70').click()
-          cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-          cy.get('#global-filter-count').should('have.text','(1 people)')
-          cy.get('.ui > .olumo-border > :nth-child(2)').click()
-          cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-          cy.get('#global-filter-count').should('have.text','(3 people)')
-      })
-      it.only("Union and Intersection of groups and department",()=>{
-        cy.ClickPeopleButton()
-        cy.wait(7000)
-        //Click the global filter button
-        cy.get('.olumo-global-filter-button> img').click()
-        cy.get('.css-1hwfws3').type('Cypress Test Department')
-        cy.get('#react-select-3-option-69').click()
-        cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-        cy.get('.css-1hwfws3').type('Cypress Test Group')
-        cy.get('#react-select-3-option-70').click()
-        cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-        cy.get('#global-filter-count').should('have.text','(1 people)')
-        cy.get('.ui > .olumo-border > :nth-child(2)').click()
-        cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-        cy.get('#global-filter-count').should('have.text','(3 people)')
+      cy.applyGlobalFilterByGroup('Cypress Test Group')
+      cy.get('#global-filter-count').should('have.text', '(2 people)')
     })
-    it.only("Union and Intersection of groups and department",()=>{
-      cy.ClickPeopleButton()
+    
+    it("Check the global filter in the people page via location", () => {
+      cy.clickPeopleButton()
       cy.wait(7000)
-      //Click the global filter button
-      cy.get('.olumo-global-filter-button> img').click()
-      cy.get('.css-1hwfws3').type('Cypress Test Department')
-      cy.get('#react-select-3-option-69').click()
-      cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-      cy.get('.css-1hwfws3').type('Cypress Test Location')
-      cy.get('#react-select-3-option-71').click()
-      cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-      cy.get('#global-filter-count').should('have.text','(1 people)')
+      cy.applyGlobalFilterByLocation('Cypress Test Location')
+      cy.get('#global-filter-count').should('have.text', '(2 people)')
+    })
+    
+    it("Check the global filter in the people page via department", () => {
+      cy.clickPeopleButton()
+      cy.wait(7000)
+      cy.applyGlobalFilterByDepartment('Cypress Test Department')
+      cy.get('#global-filter-count').should('have.text', '(2 people)')
+    })
+    
+    it("Union and Intersection of groups and location", () => {
+      cy.clickPeopleButton()
+      cy.wait(7000)
+      cy.applyUnionAndIntersection('Cypress Test Group', 'Cypress Test Location')
+      cy.get('#global-filter-count').should('have.text', '(1 people)')
       cy.get('.ui > .olumo-border > :nth-child(2)').click()
       cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-      cy.get('#global-filter-count').should('have.text','(3 people)')
+      cy.get('#global-filter-count').should('have.text', '(3 people)')
+    })
+    
+    it("Union and Intersection of groups and department", () => {
+      cy.clickPeopleButton()
+      cy.wait(7000)
+      cy.applyUnionAndIntersectionWithDepartment('Cypress Test Group', 'Cypress Test Department')
+      cy.get('#global-filter-count').should('have.text', '(1 people)')
+      cy.get('.ui > .olumo-border > :nth-child(2)').click()
+      cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
+      cy.get('#global-filter-count').should('have.text', '(3 people)')
+    })
+    
+    it.only("Union and Intersection of groups, locations, and department", () => {
+      cy.clickPeopleButton()
+      cy.wait(7000)
+      cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group', 'Cypress Test Department', 'Cypress Test Location')
+      cy.get('#global-filter-count').should('have.text', '(1 people)')
+      cy.get('.ui > .olumo-border > :nth-child(2)').click()
+      cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
+      cy.get('#global-filter-count').should('have.text', '(4 people)')
+      
+    })
   })
-  it.only("Union and Intersection of groups locations department",()=>{
-    cy.ClickPeopleButton()
-    cy.wait(7000)
-    //Click the global filter button
-    cy.get('.olumo-global-filter-button> img').click()
-    cy.get('.css-1hwfws3').type('Cypress Test Department')
-    cy.get('#react-select-3-option-69').click()
-    cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-    cy.get('.css-1hwfws3').type('Cypress Test Location')
-    cy.get('#react-select-3-option-71').click()
-    cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-    cy.get('#global-filter-count').should('have.text','(1 people)')
-    cy.get('.ui > .olumo-border > :nth-child(2)').click()
-    cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-    cy.get('#global-filter-count').should('have.text','(3 people)')
-    cy.get('.css-1hwfws3').type('Cypress Test Group')
-    cy.get('#react-select-3-option-70').click()
-    cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
-    cy.get('#global-filter-count').should('have.text','(4 people)')
-    cy.get('.ui > .olumo-border > :nth-child(1)').click()
-    cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click() 
-    cy.get('#global-filter-count').should('have.text','(1 people)')
-
-  })
-})
-
