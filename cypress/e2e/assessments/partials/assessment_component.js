@@ -56,6 +56,7 @@ Cypress.Commands.add("checkMainContainer", () => {
       }
     })
   }
+  cy.get('.olumo-receipent-title').click()
 })
   
 Cypress.Commands.add('ClickEditButton',()=>{
@@ -66,15 +67,17 @@ Cypress.Commands.add('SendAssessment',()=>{
   cy.get('.olumo-review-button > .olumo-button > .olumo-caption')
       .should('have.text', "Save & Review")
       .click()
-    //Click the continue button
-    cy.get('.olumo-cancel-button > .olumo-button')
+    
+})
+Cypress.Commands.add('ClickContinueButton',()=>{
+  cy.get('.olumo-cancel-button > .olumo-button')
       .should('have.text', ' Continue')
       .click()
-    //Select the particular user
-    cy.SelectUser()
-    cy.get('.olumo-receipent-title').click()
-    //Click the "Save & Send" button
-    cy.get('.olumo-row > :nth-child(2) > .olumo-button').click()
+    
+})
+
+Cypress.Commands.add('ClicktheSaveandSendButton',()=>{
+  cy.get('.olumo-row > :nth-child(2) > .olumo-button').click()
 })
 
 Cypress.Commands.add('AssertSentAssessment',()=>{

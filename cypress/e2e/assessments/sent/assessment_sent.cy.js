@@ -4,6 +4,8 @@ import '../partials/assessment_component'
 import '../partials/spanish_flag'
 import '../../global/navbar/navbar'
 import '../../global/sidebar/sidebar'
+import '../../people/partials/recipient'
+
 
 
 
@@ -28,7 +30,33 @@ describe('Assessment', () => {
     //Check that the spanish flag is displayed
     cy.CheckSpanishFlag()
     cy.SendAssessment()
+    cy.ClickContinueButton()
+    cy.ClicktheSaveandSendButton()
     cy.AssertSentAssessment()
     
+  })
+  it.only('Applying the intersection global filter in assessment page',()=>{
+    cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group','Cypress Test Department','Cypress Test Location')
+    cy.clickSentButton()
+    cy.ClickNewAssessmentButton()
+    cy.CreateQuestions()
+    cy.CreateSpanishQuestions()
+    cy.CheckSpanishFlag()
+    cy.SendAssessment()
+    cy.ClickContinueButton()
+    cy.get('.fluid > .ui').should('have.text','All (1)')
+  })
+  it.only('Applying the union global filter in assessment page',()=>{
+    cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group','Cypress Test Department','Cypress Test Location')
+    cy.get('.ui > .olumo-border > :nth-child(2)').click()
+    cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()
+    cy.clickSentButton()
+    cy.ClickNewAssessmentButton()
+    cy.CreateQuestions()
+    cy.CreateSpanishQuestions()
+    cy.CheckSpanishFlag()
+    cy.SendAssessment()
+    cy.ClickContinueButton()
+    cy.get('.fluid > .ui').should('have.text','All (4)')
   })
 })
