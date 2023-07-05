@@ -8,7 +8,7 @@ import '../../assessments/partials/assessment_questions_create'
 
 Cypress.Commands.add('CreatePollQuestions',()=>{
   cy.get('[data-tooltip="Polls"] > .text > .name').click()
-    cy.get('.olumo-button').click()
+  cy.get('.olumo-btn-wrapper-15x > .olumo-button').click()
     for(let i=0; i<questions.length;i++){
       cy.get('.emojionearea-editor').type(questions[i])
       cy.get('.olumo-d-flex > .ui').click()

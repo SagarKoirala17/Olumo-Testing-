@@ -4,6 +4,8 @@ import '../questions/polls_questions'
 import '../../assessments/partials/assessment_component'
 import '../../global/navbar/navbar'
 import '../../global/sidebar/sidebar'
+import '../../people/partials/recipient'
+
 
 describe('Polls', () => {
   beforeEach(() => {
@@ -36,4 +38,27 @@ describe('Polls', () => {
   cy.AssertPollsQuestions()
  
    })
+   it('Apply Intersection Filter in global filter polls page',()=>{
+    cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group','Cypress Test Department','Cypress Test Location')
+    cy.clickThePollsButton() 
+    cy.CreatePollQuestions()
+    cy.ClickTheEditButton()
+    cy.CreatePollsSpanishQuestions()
+    //Check the Spanish FLag
+    cy.get('.olumo-flag-section > :nth-child(1)').should('be.visible')
+    cy.get('.fluid > .ui').should('have.text','All (1)')
+ })
+ it('Apply Union Filter in global filter polls page',()=>{
+  cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group','Cypress Test Department','Cypress Test Location')
+  cy.get('.ui > .olumo-border > :nth-child(2)').click()
+  cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()  
+  cy.clickThePollsButton() 
+  cy.CreatePollQuestions()
+  cy.ClickTheEditButton()
+  cy.CreatePollsSpanishQuestions()
+  //Check the Spanish FLag
+  cy.get('.olumo-flag-section > :nth-child(1)').should('be.visible')
+  cy.get('.fluid > .ui').should('have.text','All (4)')
+})
+   
 })

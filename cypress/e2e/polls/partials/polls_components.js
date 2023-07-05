@@ -13,12 +13,12 @@ Cypress.Commands.add('checkHeadingContainer',()=>{
 })
 Cypress.Commands.add('checkTheNewPollsButton',()=>{
     cy.get('.search-filter-input').should('be.visible').then(()=>{
-        cy.get('.olumo-button').should('be.visible').should('have.text','New Poll')
+        cy.get('.olumo-btn-wrapper-15x > .olumo-button').should('be.visible').should('have.text','New Poll')
     })
 })
 Cypress.Commands.add('AssertPollsQuestions',()=>{
     for(let i=0; i<5;i++){
-    cy.get(`:nth-child(2) > :nth-child(${i+1}) > .olumo-question`).should('contain',questions[i])
+    cy.get(`:nth-child(2) > :nth-child(${i+1}) > .olumo-question >.olumo-question-wrapper > .olumo-caption`).should('contain',questions[i])
     }
     //Check the "View Activity" button
     cy.get(':nth-child(2) > .olumo-table-footer > .olumo-pt-2').should('be.visible').should('have.text','View Details')

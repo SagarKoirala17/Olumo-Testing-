@@ -1,4 +1,5 @@
 import { recipients } from "../../../recipients"
+import '../../people/partials/recipient'
 
 Cypress.Commands.add('clickPeopleButton',()=>{
     cy.get('[data-tooltip="People"] > .text > .name').click()
