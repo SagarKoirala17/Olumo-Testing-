@@ -1,4 +1,5 @@
 import { questions } from "../../../assessment_questions"
+import { recipients } from "../../../recipients"
 
 Cypress.Commands.add('clickThePollsButton',()=>{
     cy.get('[data-tooltip="Polls"] > .text > .name').should('have.text','Polls').click()
@@ -22,4 +23,18 @@ Cypress.Commands.add('AssertPollsQuestions',()=>{
     }
     //Check the "View Activity" button
     cy.get(':nth-child(2) > .olumo-table-footer > .olumo-pt-2').should('be.visible').should('have.text','View Details')
+})
+Cypress.Commands.add('SelectUserinPolls', () => {
+    for(let i=0; i<recipients.length;i++){
+    cy.get('.olumo-recipients-section > .fluid .search').click().type(recipients[i])
+    cy.get('.visible').then(($ele) => {
+      const resultFound = $ele.find('.item').length > 0
+      if (resultFound) {
+        cy.get('.visible > :nth-child(1) > span').click()
+      } else {
+        cy.get('.visible > .message').have.text('contain', 'No results found.')
+      }
+    })
+  }
+  cy.get('.fluid').click()
 })

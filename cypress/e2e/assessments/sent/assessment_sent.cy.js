@@ -31,11 +31,12 @@ describe('Assessment', () => {
     cy.CheckSpanishFlag()
     cy.SendAssessment()
     cy.ClickContinueButton()
+    cy.SelectUser()
     cy.ClicktheSaveandSendButton()
     cy.AssertSentAssessment()
     
   })
-  it.only('Applying the intersection global filter in assessment page',()=>{
+  it('Applying the intersection global filter in assessment page',()=>{
     cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group','Cypress Test Department','Cypress Test Location')
     cy.clickSentButton()
     cy.ClickNewAssessmentButton()
@@ -46,7 +47,7 @@ describe('Assessment', () => {
     cy.ClickContinueButton()
     cy.get('.fluid > .ui').should('have.text','All (1)')
   })
-  it.only('Applying the union global filter in assessment page',()=>{
+  it('Applying the union global filter in assessment page',()=>{
     cy.applyUnionAndIntersectionWithGroupLocationDepartment('Cypress Test Group','Cypress Test Department','Cypress Test Location')
     cy.get('.ui > .olumo-border > :nth-child(2)').click()
     cy.get('.olumo-d-flex > .olumo-btn-section > .olumo-button').click()

@@ -16,14 +16,7 @@ Cypress.Commands.add('FetchOnlyNumber',()=>{
      window.numberArray = filteredArrays.map((element) => parseInt(element.match(/\d+/)[0]));
     console.log(numberArray)
 })
-Cypress.Commands.add('AnswerQuestions', () => {
-  window.numberArray.forEach((number) => {
-    let multipleChoiceSelector = `#edit_response_${number} > .vertical-answers > :nth-child(1) > .ui > .collection_radio_buttons`;
-    let scaleClassSelector = `#edit_response_${number} > .horizontal-answers > :nth-child(1) > .ui > .collection_radio_buttons`;
-    let freeResponseSelector = `#response-${number}-feedback`;
 
-  })
-})
 
 
 function getRandomValue(number) {

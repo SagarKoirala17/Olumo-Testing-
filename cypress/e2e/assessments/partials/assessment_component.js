@@ -56,7 +56,7 @@ Cypress.Commands.add("checkMainContainer", () => {
       }
     })
   }
-  cy.get('.fluid').click()
+  cy.get('.modal > .olumo-header-section').click()
 })
   
 Cypress.Commands.add('ClickEditButton',()=>{

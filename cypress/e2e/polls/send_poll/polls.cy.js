@@ -27,7 +27,7 @@ describe('Polls', () => {
    cy.CreatePollsSpanishQuestions()
    //Check the Spanish FLag
    cy.get('.olumo-flag-section > :nth-child(1)').should('be.visible')
-   cy.SelectUser()
+   cy.SelectUserinPolls()
    //Close the dropdowm list
    cy.get('.olumo-recipients-section > .olumo-font-size-md').click()
    //Click the Review and Send Button
